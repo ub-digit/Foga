@@ -1,0 +1,2 @@
+class PostInfo < ApplicationRecord
+end

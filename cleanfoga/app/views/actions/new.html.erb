@@ -1,0 +1,12 @@
+show the new stuff
+
+
+<%= form_for @action do |f| %>
+	<%= f.label :action_type, "Action type" %> 
+	<%= f.text_field :action_type %>
+	<br><br>
+	<%= f.label :description, "Description" %>
+	<%= f.text_area :description %>
+	<br><br>
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end %>
