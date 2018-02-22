@@ -10,27 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125121015) do
+ActiveRecord::Schema.define(version: 20180129145853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "actions", force: :cascade do |t|
-    t.string "action_type"
+  create_table "operations", force: :cascade do |t|
+    t.string "operation_type", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["operation_type"], name: "index_operations_on_operation_type", unique: true
   end
 
   create_table "post_infos", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "issn"
-    t.string "created_by"
-    t.string "updated_by"
+    t.string "created_by", null: false
+    t.string "updated_by", null: false
     t.string "publisher"
     t.text "comment"
+    t.integer "operation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_post_infos_on_title", unique: true
   end
 
 end

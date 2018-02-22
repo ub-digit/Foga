@@ -1,2 +1,18 @@
-<h1>PostInfos#index</h1>
-<p>Find me in app/views/post_infos/index.html.erb</p>
+
+
+<% @post_infos.each do |p| %>
+	<h2> Title:  <%=  p.title %> </h2>
+	<b> Publisher:  </b><%= p.publisher %> <br>
+	<b> ISSN:  </b><%= p.issn %> <br>
+	<b> Operation id:  </b><%= @post_info.operation_id %> <br>
+	
+	<!--  Operation:  < %= p.operation_type %> <br > -->
+	<br>
+	<b>Created by: </b> <%= p.created_by %> <br>
+	<b>At:   </b><%= p.created_at %>  <!-- change to date -->
+	<br>
+	<b>Comment:  </b><%= p.comment %><br>
+	<b>Updated by: </b> <%= @post_info.Updated_by %> <br>
+
+	
+<% end %>

@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   
 
-resources :post_infos
-resources :actions
+  #get 'operations/index'
 
-# match ':controller(/:action(/:id))', :via => :get
+resources :post_infos
+resources :operations
+
+root 'post_infos#index'
+
+# deprecated in v5.2
+#match ':controller(/:action(/:id))', :via => :get
 
 
 

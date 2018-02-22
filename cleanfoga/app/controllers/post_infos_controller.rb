@@ -16,6 +16,8 @@ before_action :find_postinfo, only: [:show, :edit, :update]
   	if @post_info.save
   		redirect_to @post_info
   	else
+      pp @post_info.errors  #show errors in terminal window
+
   		render 'new'
   	end
   end
@@ -25,7 +27,7 @@ before_action :find_postinfo, only: [:show, :edit, :update]
   end
 
   def edit
-  	#find_postinfo
+  	find_postinfo  #not necessary?
 
   end
 
@@ -46,5 +48,5 @@ def find_postinfo
 end
 
 def post_params
-	params.require(:post_info).permit(:title, :comment, :created_by, :updated_by)
+	params.require(:post_info).permit(:title, :comment, :created_by, :updated_by, :operation_id)
 end

@@ -1,1 +1,27 @@
 rendering posts to show
+
+
+<h1>Showing post</h1>
+
+
+
+<h2> Title:  <%=  @post_info.title %> </h2>
+	<b> Publisher:  </b><%= @post_info.publisher %> <br>
+	<b> ISSN:  </b><%= @post_info.issn %> <br>
+	<b> Operation id:  </b><%= @post_info.operation_id %> <br>
+	
+	<!--  Operation:  < %= @post_info.operation_type %> <br > -->
+	<br>
+	<b>Created by: </b> <%= @post_info.created_by %> <br>
+	<b>At:   </b><%= @post_info.created_at %>  <!-- change to date -->
+	<br>
+	<b>Comment:  </b><%= @post_info.comment %><br>
+	<b>Updated by: </b> <%= @post_info.updated_by %> <br>
+	
+	
+	
+	<br>
+	
+	
+	<br>
+	<!-- < %= @post_info. %> -->
