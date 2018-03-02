@@ -2,7 +2,8 @@ class OperationsController < ApplicationController
   before_action :find_operation, only:[:show, :edit, :update]
 
   def index
-  	@operations = Operation.all.order("created_at DESC")
+  	@operations = Operation.all.order("operation_type")
+    #.order("created_at DESC")
   end
 
   def new
@@ -14,6 +15,7 @@ class OperationsController < ApplicationController
   	if @operation.save
   		redirect_to @operation
   	else
+      pp @operation.errors
   		render 'new'
   	end
   end

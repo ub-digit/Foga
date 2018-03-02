@@ -1,10 +1,26 @@
 
 
+
+
 <%= form_for @operation do |f| %>
-	<%= f.label :operation_type, "Operation type" %> 
+
+	<% if @operation.errors.any? %>
+	<ul>
+		<h4>ERROR(s)</h4>
+
+		<% @operation.errors.full_messages.each  do |e_message| %>
+		<!-- .errors.full_messages.each do |e_message| %> 
+		-->
+			<li> <%= e_message %> </li>
+		<% end %>
+		
+	</ul>
+	<% end %>
+
+	<%= f.label :operation_type, "Operation type" %> <br>
 	<%= f.text_field :operation_type %>
-	<br><br>
-	<%= f.label :description, "Description" %>
+	<br>
+	<%= f.label :description, "Description" %><br>
 	<%= f.text_area :description %>
 	<br><br>
 	<%= f.submit "Submit", :disable_with => 'Submiting...' %>

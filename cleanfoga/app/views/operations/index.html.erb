@@ -1,10 +1,14 @@
+ <%= render 'shared/links' %> 
 
+<h3>
+	<%= link_to("Ny åtgärd", 
+	{   :controller => 'operations',
+		:action => 'new'}) %></h3>
 
 
 <% @operations.each do |o| %>
-	<h2> Operation type:  <%=  o.operation_type %> </h2>
+	<b> Operation type:  </b><%=  o.operation_type %>  <br>
 	<b> Description:  </b><%= o.description %> <br>
-	<br>
-	<b> Operation Id:  </b><%=  o.id %> <br>
-<% end -%>
+	<b> Operation Id:  </b><%=  o.id %> <br><br>
+<% end %>
 
