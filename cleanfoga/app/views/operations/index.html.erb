@@ -1,4 +1,4 @@
- <%= render 'shared/links' %> 
+
 
 <h3>
 	<%= link_to("Ny åtgärd", 
@@ -7,8 +7,9 @@
 
 
 <% @operations.each do |o| %>
-	<b> Operation type:  </b><%=  o.operation_type %>  <br>
+	<b> Operation type:  </b><%= link_to o.operation_type, operation_path(o) %>  <br>
 	<b> Description:  </b><%= o.description %> <br>
-	<b> Operation Id:  </b><%=  o.id %> <br><br>
+	<!-- <b> Operation Id:  </b><%=  o.id %>  -->
+	<br><br>
 <% end %>
 

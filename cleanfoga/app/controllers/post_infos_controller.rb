@@ -5,7 +5,7 @@ class PostInfosController < ApplicationController
 # This finds the current object (with the passed in id, and is thereafter 
 # available to the stated functions show, edit, update and destroy. This is 
 # done before any other action. Duh)
-  before_action :find_postinfo, only: [:show, :edit, :update, :destroy]
+  before_action :find_postinfo, only: [:show, :edit, :update, :destroy, :search]
   
 
   def index
@@ -13,10 +13,20 @@ class PostInfosController < ApplicationController
   end
 
   def new
+    # When creating a new post, should assign that
+    # automatically to the currently logged in user.
+
+    #@post_info = current_user.post_info.build
+
   	@post_info = PostInfo.new
   end
 
   def create
+    # When creating a new post, should assign that
+    # automatically to the currently logged in user.
+
+    #@post_info = current_user.post_info.build(post_params)
+
   	@post_info = PostInfo.new(post_params)
     @post_info.updated_by = @post_info.created_by
   	
@@ -30,14 +40,16 @@ class PostInfosController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
+
+    # When a post, should set updated_by
+    # automatically to the currently logged in user.
+
     #trying to disallow changing created by when in update mode
     #org_created_by = @post_info.created_by
     #post_params.created_by = @post_info.created_by
@@ -49,7 +61,6 @@ class PostInfosController < ApplicationController
   end
 
   def destroy
-    #what am I supposed to do here??
     @post_info.destroy
     redirect_to post_infos_path
   end
@@ -57,6 +68,7 @@ class PostInfosController < ApplicationController
 
   def search
     #do the search things
+
   end 
 
 end

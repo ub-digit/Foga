@@ -19,7 +19,7 @@ root 'post_infos#index'
 
 
 
-  #get 'actions/index'
+  get 'post_infos/search'
 
   #get 'post_infos/index'
 

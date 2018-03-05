@@ -1,15 +1,16 @@
-<%= render 'shared/links' %>
 
 
-<h3>
-	<%= link_to("Ny åtgärd", 
-	{   :controller => 'operations',
-		:action => 'new'}) %></h3>
+<div>
+	<br><br>
+	<h3> <%= link_to "Ny åtgärd", new_operation_path %> </h3>
 
-Ny åtgärd skapades.
+</div>
+
+<!-- Ny åtgärd skapades.  -->
 
 
-<h4> Operation type:  <%=  @operation.operation_type %> </h4>
-	<b> Description:  </b><%= @operation.description %> <br>
-	<b> Operation Id:  </b><%=  @operation.id %> <br>
+<h4> Operation type:  		<%=  @operation.operation_type %> </h4>
+	<b> Description:  </b>	<%= @operation.description %> <br>
+	
+<!--	<b> Operation Id:  </b>	<%=  @operation.id %> <br> -->
 	

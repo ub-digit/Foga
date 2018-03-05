@@ -1,6 +1,5 @@
 
-
-
+<%= render 'form' %>
 <br>
 
 <h2> Title:  <%= @post_info.title %> </h2>
@@ -15,14 +14,5 @@
 	<br>
 	<b>Comment:  	</b><%= @post_info.comment %><br>
 	<b>Updated by: 	</b> <%= @post_info.updated_by %> <br>
-	<b>Updated: 	</b> <%= @post_info.updated_at %> <br>
 	
 	
-	
-	
-	<br>
-	<%= link_to "Edit post", edit_post_info_path %>
-	<%= link_to "Delete post", post_info_path(@post_info), method: :delete, data: { confirm: "Sure?"} %>
-	
-	<br>
-	<!-- < %= @post_info. %> -->
