@@ -5,11 +5,20 @@
 	{   :controller => 'operations',
 		:action => 'new'}) %></h3>
 
+<table>
+	<tr>
+		<h3>
+			<th>Operation type 	</th>
+			<th>Description 	</th>
+			<th>Operation Id 	</th>
+		</h3>
+	</tr>
 
 <% @operations.each do |o| %>
-	<b> Operation type:  </b><%= link_to o.operation_type, operation_path(o) %>  <br>
-	<b> Description:  </b><%= o.description %> <br>
-	<!-- <b> Operation Id:  </b><%=  o.id %>  -->
-	<br><br>
+	<tr>
+		<td> <%= link_to o.operation_type, operation_path(o) %> </td>
+		<td> <%= o.description %> </td>
+		<td> <%=  o.id %> </td>
+	</tr>
 <% end %>
-
+</table>
