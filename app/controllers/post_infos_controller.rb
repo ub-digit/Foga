@@ -9,22 +9,23 @@ class PostInfosController < ApplicationController
   
 
   def index
+<<<<<<< cfd1fc68ca4dfdbe6570ff9a8693e2abf03767f8:app/controllers/post_infos_controller.rb
   	@post_infos = PostInfo.all
+=======
+    
+    @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '30 DAY')").order("created_at DESC")
+>>>>>>> Started using Ransack bundle. Search on title implemented but not displayed correctly.:cleanfoga/app/controllers/post_infos_controller.rb
   end
 
   def new
-    # When creating a new post, should assign that
-    # automatically to the currently logged in user.
-
+    # When creating a new post, should assign that automatically to the currently logged in user.
     #@post_info = current_user.post_info.build
 
   	@post_info = PostInfo.new
   end
 
   def create
-    # When creating a new post, should assign that
-    # automatically to the currently logged in user.
-
+    # When creating a new post, should assign that automatically to the currently logged in user.
     #@post_info = current_user.post_info.build(post_params)
 
   	@post_info = PostInfo.new(post_params)
@@ -46,9 +47,7 @@ class PostInfosController < ApplicationController
   end
 
   def update
-
-    # When a post, should set updated_by
-    # automatically to the currently logged in user.
+    # When a post, should set updated_by automatically to the currently logged in user.
 
     #trying to disallow changing created by when in update mode
     #org_created_by = @post_info.created_by
@@ -73,6 +72,12 @@ class PostInfosController < ApplicationController
     @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", @days).order("created_at DESC")
   end
 
+  def search
+    #do the search things
+     @search = PostInfo.search(params[:q])
+     @post_infos = @search.result
+     redirect_to @post_infos
+  end 
 
 end
 
