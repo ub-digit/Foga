@@ -8,6 +8,7 @@ get 'post_infos/latest'
 
 
 
+  get 'post_infos/latest'
   get 'post_infos/search'
 
 resources :post_infos

@@ -1,0 +1,31 @@
+<br>
+<!-- Searchy searchy -->
+
+<%= search_form_for @search do |f| %>
+	<div class="field">
+		<%= f.label :title_cont, "Title contains" %>
+		<%= f.text_field :title_cont %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Search" %>
+	</div>
+<% end %>
+
+
+<!-- show the search results -->
+
+<% @post_infos.each do |p| %>
+	<h2> Title:  		<%= link_to p.title, post_info_path(p) %> </h2>
+	<b> Publisher: </b>	<%= p.publisher %> <br>
+	<b> ISSN:  </b>		<%= p.issn %> <br>
+	
+	<b> Operation type: </b><%= Operation.find(p.operation_id).operation_type %> <br>
+	
+	<b>Created by: </b> <%= p.created_by %> <br>
+	<b>At:   </b>		<%= p.created_at %>  <!-- change to date -->
+	<br>
+	<b>Comment:  </b>	<%= p.comment %><br>
+	<b>Updated by: </b> <%= p.updated_by %> <br>
+
+	
+<% end %>
