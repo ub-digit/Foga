@@ -9,12 +9,17 @@ class PostInfosController < ApplicationController
   
 
   def index
+<<<<<<< 93d32029b7fc75217b1e8914c05a0a6cad14dde0:app/controllers/post_infos_controller.rb
 <<<<<<< cfd1fc68ca4dfdbe6570ff9a8693e2abf03767f8:app/controllers/post_infos_controller.rb
   	@post_infos = PostInfo.all
 =======
     
     @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '30 DAY')").order("created_at DESC")
 >>>>>>> Started using Ransack bundle. Search on title implemented but not displayed correctly.:cleanfoga/app/controllers/post_infos_controller.rb
+=======
+     @search = PostInfo.search(params[:q])
+     @post_infos = @search.result
+>>>>>>> Search functionality with display in index and separate latest page. TBC.:cleanfoga/app/controllers/post_infos_controller.rb
   end
 
   def new
@@ -76,12 +81,9 @@ class PostInfosController < ApplicationController
     #do the search things
      @search = PostInfo.search(params[:q])
      @post_infos = @search.result
-     redirect_to @post_infos
   end 
 
 end
-
-
 
 
 private
