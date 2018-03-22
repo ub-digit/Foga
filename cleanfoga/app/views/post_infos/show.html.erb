@@ -1,0 +1,28 @@
+
+
+
+	<br>
+
+	<h2> Title:  <%= @post_info.title %> </h2>
+	<b> Operation type: </b><%= Operation.find(@post_info.operation_id).operation_type %> <br>
+
+	<b> Publisher:  	</b><%= @post_info.publisher %> <br>
+	<b> ISSN:  			</b><%= @post_info.issn %> <br>
+	
+	<!--  Operation:  < %= @post_info.operation_type %> <br > -->
+	<b>Created by: 	</b> <%= @post_info.created_by %> <br>
+	<b>At:   		</b><%= @post_info.created_at %>  <!-- change to date -->
+	<br>
+	<b>Comment:  	</b><%= @post_info.comment %><br>
+	<b>Updated by: 	</b> <%= @post_info.updated_by %> <br>
+	<b>Updated: 	</b> <%= @post_info.updated_at %> <br>
+	
+	
+	
+	
+	<br>
+	<%= link_to "Edit post", edit_post_info_path %>
+	<%= link_to "Delete post", post_info_path(@post_info), method: :delete, data: { confirm: "Sure?"} %>
+	
+	<br>
+	<!-- < %= @post_info. %> -->
