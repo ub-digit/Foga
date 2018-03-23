@@ -1,9 +1,6 @@
 
 
-<h3>
-	<%= link_to("Ny åtgärd", 
-	{   :controller => 'operations',
-		:action => 'new'}) %></h3>
+<h3> <%= link_to "Ny åtgärd", new_operation_path %> </h3>
 
 <table>
 	<tr>
@@ -16,7 +13,8 @@
 
 <% @operations.each do |o| %>
 	<tr>
-		<td> <%= link_to o.operation_type, operation_path(o) %> </td>
+		<td><%= link_to o.operation_type, edit_operation_path(o) %> </td>
+			<!-- < %= link_to o.operation_type, operation_path(o) %> </td> -->
 		<td> <%= o.description %> </td>
 		<td> <%=  o.id %> </td>
 	</tr>

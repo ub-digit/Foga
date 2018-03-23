@@ -1,0 +1,29 @@
+
+
+
+<table>
+	<tr>
+			<th>Titel 			</th>
+			<th>Publisher 		</th>
+			<th>ISSN 			</th>
+			<th>Operation type 	</th>
+			<th>Created by 		</th>
+			<th>Created at 				</th>
+		<!--	<th>Comment 		</th> Displayed only on show page. --> 
+			<th>Updated by </th>
+	</tr>
+
+	<% @post_infos.each do |p| %>
+		<tr>
+			<td>	<%= link_to p.title, post_info_path(p) %> </td>
+			<td>	<%= p.publisher %> </td>
+	 		<td>	<%= p.issn %> </td>
+			<td>	<%= Operation.find(p.operation_id).operation_type %> </td>
+			<td>	<%= p.created_by %> </td>
+			<td>	<%= p.created_at %>  <!-- change to date --> </td>
+			<!-- < %= p.comment %><br> -->
+			<td>	<%= p.updated_by %> </td>
+		</tr>
+	<% end %>
+</table>
+	
