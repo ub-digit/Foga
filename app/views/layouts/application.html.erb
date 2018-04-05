@@ -13,26 +13,24 @@
   <body>
 
 
-  <nav class="navbar navbar-default"> 
-    <div class="container">
-      <div class="navbar-header">
-        <%= link_to "SÖK", post_infos_path %>
-      </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        <!-- if using bootstrap then envelop each link thing in a <li> tab.
-          Can also have if then conditions. E.g. if logged in as admin
-          show new/edit operations link. Look into that! -->
+	<nav class="navbar navbar-default">	
+		<div class="container">
+			<div class="navbar-header">
+				<%= link_to "SÖK", post_infos_search_path %>
+			</div>
 
-        <%= link_to "SENASTE POSTER", post_infos_latest_path %> 
-        <!-- , class: "navbar-brand"  root_path   -->
-        <%= link_to "NY POST", new_post_info_path %>
-        <%= link_to "ÅTGÄRDER", operations_path %>
-      </ul>
-    </div>
-  </nav>
-
-
+			<ul class="nav navbar-nav navbar-right">
+				<!-- if using bootstrap then envelop each link thing in a <li> tab.
+					Can also have if then conditions. E.g. if logged in as admin
+					show new/edit operations link. Look into that! -->
+				<%= link_to "SENASTE POSTER", post_infos_latest_path %>	<!-- , class: "navbar-brand"  
+				 root_path	 -->
+				<%= link_to "NY POST", new_post_info_path %>
+				<%= link_to "ÅTGÄRDER", operations_path %>
+			</ul>
+		</div>
+	</nav>
 
     <%= yield %>
     <!-- Everything above this yield tag will be common to every view page in our application. -->
