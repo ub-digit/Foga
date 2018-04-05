@@ -11,11 +11,11 @@
 	
 	<!--  Operation:  < %= @post_info.operation_type %> <br > -->
 	<b>Created by: 	</b> <%= @post_info.created_by %> <br>
-	<b>At:   		</b><%= @post_info.created_at %>  <!-- change to date -->
+	<b>At:   		</b><%= @post_info.created_at.to_date %>  
 	<br>
 	<b>Comment:  	</b><%= @post_info.comment %><br>
 	<b>Updated by: 	</b> <%= @post_info.updated_by %> <br>
-	<b>Updated: 	</b> <%= @post_info.updated_at %> <br>
+	<b>Updated: 	</b> <%= @post_info.updated_at.to_date %> <br>
 	
 	
 	

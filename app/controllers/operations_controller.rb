@@ -1,5 +1,5 @@
 class OperationsController < ApplicationController
-  before_action :find_operation, only:[:show, :edit, :update]
+  before_action :find_operation, only:[:show, :edit, :update, :destroy]
 
   def index
   	@operations = Operation.all.order("operation_type")
@@ -34,6 +34,11 @@ class OperationsController < ApplicationController
   	else
   		render 'edit'
   	end
+  end
+
+  def destroy
+    @operation.destroy
+    redirect_to operations_path
   end
 
 
