@@ -15,6 +15,7 @@
 
 	<% @post_infos.each do |p| %>
 		<tr>
+
 			<td>	<%= link_to p.title, post_info_path(p) %> 					</td>
 			<td>	<%= p.publisher %> 																	</td>
 	 		<td>	<%= p.issn %> 																			</td>
@@ -22,6 +23,7 @@
 			<td>	<%= p.created_by %> 																</td>
 			<td>	<%= p.updated_by %> 																</td>
 			<td>	<%= p.updated_at.to_date %> 												</td>
+
 			<!-- < %= p.comment %><br> -->
 		</tr>
 	<% end %>
