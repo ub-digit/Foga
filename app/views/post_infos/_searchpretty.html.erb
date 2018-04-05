@@ -20,7 +20,7 @@
 	 		<td>	<%= p.issn %> </td>
 			<td>	<%= Operation.find(p.operation_id).operation_type %> </td>
 			<td>	<%= p.created_by %> </td>
-			<td>	<%= p.created_at %>  <!-- change to date --> </td>
+			<td>	<%= p.created_at.to_date %> </td>
 			<!-- < %= p.comment %><br> -->
 			<td>	<%= p.updated_by %> </td>
 		</tr>
