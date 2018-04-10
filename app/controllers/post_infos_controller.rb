@@ -83,5 +83,5 @@ def find_postinfo
 end
 
 def post_params
-	params.require(:post_info).permit(:title, :comment, :created_by, :updated_by, :operation_id)
+	params.require(:post_info).permit(:title, :publisher, :issn, :comment, :created_by, :updated_by, :operation_id)
 end
