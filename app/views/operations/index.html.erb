@@ -7,7 +7,6 @@
 		<h3>
 			<th>Operation type 	</th>
 			<th>Description 	</th>
-			<th>Operation Id 	</th>
 		</h3>
 	</tr>
 
@@ -16,7 +15,6 @@
 		<td><%= link_to o.operation_type, edit_operation_path(o) %> </td>
 			<!-- < %= link_to o.operation_type, operation_path(o) %> </td> -->
 		<td> <%= o.description %> </td>
-		<td> <%=  o.id %> </td>
 	</tr>
 <% end %>
 </table>

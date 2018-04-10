@@ -3,3 +3,5 @@
 <h1>Editing operation</h1>
 
 <%= render 'form' %>
+
+<%= link_to "Delete post", operation_path(@operation), method: :delete, data: { confirm: "Sure?"} %>
