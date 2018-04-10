@@ -10,6 +10,15 @@
 		<%= f.label :publisher_cont, "Publisher" %>
 		<%= f.text_field :publisher_cont %>
 	</div>
+	<div class="field">
+		<%= f.label :issn_cont, "ISSN" %>
+		<%= f.text_field :issn_cont %>
+	</div>
+	<div class="field">
+		<%= f.label :operation_id_cont, "Operation" %>
+		<%= collection_select(:post_info, :operation_id, Operation.all.order("operation_type"), :id, :operation_type, :prompt => "Välj") %>
+		<!-- %= f.text_field :operation_id_cont %> -->
+	</div>
 	<div class="actions">
 		<%= f.submit "Search" %>
 	</div>

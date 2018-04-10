@@ -1,6 +1,8 @@
 
 
-
+<br>
+<h3> <%= @post_infos.count %> Träffar </h3>
+<br><br>
 <table>
 	<tr>
 			<th><%= sort_link @search, :title, "Titel"  %>			</th>
@@ -8,9 +10,10 @@
 			<th><%= sort_link @search, :issn, "ISSN" %> 			</th>
 			<th><%= sort_link @search, :operation_id, "Operation type" %> 	</th>
 			<th><%= sort_link @search, :created_by, "Created by" %> 		</th>
-			<th><%= sort_link @search, :created_at, "Created at" %>			</th>
-		<!--	<th>Comment 		</th> Displayed only on show page. --> 
 			<th><%= sort_link @search, :updated_by, "Updated by" %> </th>
+			<th><%= sort_link @search, :updated_at, "Updated at" %>			</th>
+		<!--	<th>Comment 		</th> Displayed only on show page. --> 
+			
 	</tr>
 
 	<% @post_infos.each do |p| %>
@@ -20,9 +23,10 @@
 	 		<td>	<%= p.issn %> </td>
 			<td>	<%= Operation.find(p.operation_id).operation_type %> </td>
 			<td>	<%= p.created_by %> </td>
-			<td>	<%= p.created_at.to_date %> </td>
-			<!-- < %= p.comment %><br> -->
 			<td>	<%= p.updated_by %> </td>
+			<td>	<%= p.updated_at.to_date %> </td>
+			<!-- < %= p.comment %><br> -->
+
 		</tr>
 	<% end %>
 </table>
