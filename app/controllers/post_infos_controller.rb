@@ -5,7 +5,7 @@ class PostInfosController < ApplicationController
 # This finds the current object (with the passed in id, and is thereafter 
 # available to the stated functions show, edit, update and destroy. This is 
 # done before any other action. Duh)
-  before_action :find_postinfo, only: [:show, :edit, :update, :destroy, :search]
+  before_action :find_postinfo, only: [:show, :edit, :update, :destroy]
   
 
   def index
@@ -65,11 +65,6 @@ class PostInfosController < ApplicationController
     redirect_to post_infos_path
   end
 
-
-  def search
-    #do the search things
-
-  end 
 
 end
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 
-  resources :searches
+  
   #get 'operations/index'
 
 resources :post_infos
@@ -14,12 +14,6 @@ root 'post_infos#index'
 
 
 
-
-
-
-
-
-  get 'post_infos/search'
 
   #get 'post_infos/index'
 
