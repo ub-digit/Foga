@@ -3,26 +3,23 @@
 
 <br>
 
-<h2> Title:  <%= @post_info.title %> </h2>
-	<b> Operation type: </b><%= Operation.find(@post_info.operation_id).operation_type %> <br>
+<h2> Titel:  <%= @post_info.title %> </h2>
+	<b> Åtgärd: 			</b><%= Operation.find(@post_info.operation_id).operation_type %> <br>
 
-	<b> Publisher:  	</b><%= @post_info.publisher %> <br>
-	<b> ISSN:  			</b><%= @post_info.issn %> <br>
+	<b> Utgivare:  		</b><%= @post_info.publisher %> <br>
+	<b> ISSN:  				</b><%= @post_info.issn %> <br>
 	
-	<!--  Operation:  < %= @post_info.operation_type %> <br > -->
-	<b>Created by: 	</b> <%= @post_info.created_by %> <br>
-	<b>At:   		</b><%= @post_info.created_at.to_date %>  
+	<b>	Skapad av: 		</b><%= @post_info.created_by %> <br>
+	<b>	Skapad:   		</b><%= @post_info.created_at.to_date %>  
 	<br>
-	<b>Comment:  	</b><%= @post_info.comment %><br>
-	<b>Updated by: 	</b> <%= @post_info.updated_by %> <br>
-	<b>Updated: 	</b> <%= @post_info.updated_at.to_date %> <br>
-	
-	
+	<b>	Kommentar:  	</b><%= @post_info.comment %><br>
+	<b>	Updaterad av: </b><%= @post_info.updated_by %> <br>
+	<b>	Updaterad: 		</b><%= @post_info.updated_at.to_date %> <br>
+		
 	
 	
 	<br>
-	<%= link_to "Edit post", edit_post_info_path %>
-	<%= link_to "Delete post", post_info_path(@post_info), method: :delete, data: { confirm: "Sure?"} %>
-	
+	<%= link_to "Updatera", edit_post_info_path %>
+	<%= link_to "Radera", post_info_path(@post_info), 
+			method: :delete, data: { confirm: "Är du säker?"} %>
 	<br>
-	<!-- < %= @post_info. %> -->

@@ -38,9 +38,11 @@
 	<%= f.text_field :created_by %><br>
 	<%= f.text_field :updated_by %><br>
 	<br>
-	<%= f.label :operation_id, "* Operation Type" %> <br>
-	<%= collection_select(:post_info, :operation_id, Operation.all.order("operation_type"), :id, :operation_type, :prompt => "Välj") %>
+	<%= f.label :operation_id, "* Åtgärd" %> <br>
+	<%= collection_select(:post_info, :operation_id, 
+			Operation.all.order("operation_type"), 
+			:id, :operation_type, :prompt => "Välj") %>
 	<br>
 	<br>
-	<%= f.submit %>
+	<%= f.submit "Spara"%>
 <% end %>

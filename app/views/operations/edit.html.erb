@@ -1,7 +1,8 @@
 
 
-<h1>Editing operation</h1>
+<h1>Redigera åtgärd</h1>
 
 <%= render 'form' %>
-
-<%= link_to "Delete post", operation_path(@operation), method: :delete, data: { confirm: "Sure?"} %>
+<br><br>
+<%= link_to "Radera åtgärd", operation_path(@operation), 
+    method: :delete, data: { confirm: "Är du säker?"} %>
