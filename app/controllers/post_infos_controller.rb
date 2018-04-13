@@ -9,7 +9,7 @@ class PostInfosController < ApplicationController
   
 
   def index
-  	@post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '30 DAY')").order("created_at DESC")
+  	@post_infos = PostInfo.all
   end
 
   def new
@@ -63,6 +63,10 @@ class PostInfosController < ApplicationController
   def destroy
     @post_info.destroy
     redirect_to post_infos_path
+  end
+
+  def latest
+    @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '30 DAY')").order("created_at DESC")   
   end
 
 
