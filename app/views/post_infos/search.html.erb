@@ -3,11 +3,11 @@
 
 <%= search_form_for @search do |f| %>
 	<div class="field">
-		<%= f.label :title_cont, "Title contains" %>
+		<%= f.label :title_cont, "Titel innehåller" %>
 		<%= f.text_field :title_cont %>
 	</div>
 	<div class="field">
-		<%= f.label :publisher_cont, "Publisher" %>
+		<%= f.label :publisher_cont, "Utgivare" %>
 		<%= f.text_field :publisher_cont %>
 	</div>
 	<div class="field">
@@ -15,12 +15,13 @@
 		<%= f.text_field :issn_cont %>
 	</div>
 	<div class="field">
-		<%= f.label :operation_id_cont, "Operation" %>
-		<%= collection_select(:post_info, :operation_id, Operation.all.order("operation_type"), :id, :operation_type, :prompt => "Välj") %>
+		<%= f.label :operation_id_cont, "Åtgärd" %>
+		<%= collection_select(:post_info, :operation_id, Operation.all.order("operation_type"), 
+													:id, :operation_type, :prompt => "Välj") %>
 		<!-- %= f.text_field :operation_id_cont %> -->
 	</div>
 	<div class="actions">
-		<%= f.submit "Search" %>
+		<%= f.submit "Sök" %>
 	</div>
 <% end %>
 
