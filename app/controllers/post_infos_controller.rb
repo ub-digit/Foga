@@ -68,8 +68,7 @@ class PostInfosController < ApplicationController
     @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", @days).order("created_at DESC")
   end
 
-  def search
-    #do the search things
+  def search  
      @search = PostInfo.search(params[:q])
      @post_infos = @search.result
   end 
