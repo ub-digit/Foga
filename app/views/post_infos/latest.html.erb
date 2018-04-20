@@ -1,3 +1,22 @@
 
 
+
+<div>
+   <%= @days %>
+</div>
+<br>
+
+<table>
+   <tr>
+      <th>
+      <%= link_to("Senaste 7 dagarna", {:action => 'latest', :days => 7}) %>
+      </th>
+      <th>
+      <%= link_to("Senaste 30 dagarna", {:action => 'latest', :days => 30}) %>
+      </th>
+   </tr>
+</table>
+<br>
+
+
 <%= render 'pretty' %>
