@@ -25,5 +25,30 @@
 
 
 
+<br>
+<div>
+   <h3> <%= @days %> dagar bakåt </h3>
+</div>
+<br>
+
+<!--  Make it prettier. not in this table format. 
+      Toggle text saying how many days we are showing now 
+      and link to the other option for days.
+      I.e. only one link. Text with info should NOT be hardcoded. 
+      If entering no. of days via url...
+ -->
+<table>
+   <tr>
+      <th>
+      <%= link_to("Senaste 7 dagarna", {:action => 'latest', :days => 7}) %>
+      </th>
+      <th>
+      <%= link_to("Senaste 30 dagarna", {:action => 'latest', :days => 30}) %>
+      </th>
+   </tr>
+</table>
+<br><br>
+
+
 <%= render 'pretty' %>
 
