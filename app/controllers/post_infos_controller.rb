@@ -67,6 +67,9 @@ class PostInfosController < ApplicationController
 
   def latest
     @days = params[:days].to_i
+    if @days == 0
+      @days = 7
+    end
     @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", @days).order("created_at DESC")
   end
 
