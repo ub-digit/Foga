@@ -2,15 +2,24 @@
 <!-- Searchy searchy -->
 
 <%= search_form_for @search do |f| %>
+	<!-- <div class="field">
+		< %= f.label  "Titel börjar med" %>
+		< %= f.check_box :title_start %>
+		< %= f.text_field :title_start %>			
+	</div> -->
+
 	<div class="field">
-		<%= f.label :title_cont, "Titel innehåller" %>
-		<%= f.text_field :title_cont %>
+		<%=  # to search for any of the terms existing in my_field
+			 f.label :title_has_every_term, "Titel innehåller" %>
+  		<%= f.text_field  :title_has_every_term %>
 	</div>
+
 	<div class="field">
 		<%= f.label :publisher_cont, "Utgivare" %>
 		<%= f.text_field :publisher_cont %>
 	</div>
 	<div class="field">
+		<!-- ISSN should maybe be equal to? -->
 		<%= f.label :issn_cont, "ISSN" %>
 		<%= f.text_field :issn_cont %>
 	</div>
@@ -23,6 +32,9 @@
 	<div class="actions">
 		<%= f.submit "Sök" %>
 	</div>
+
 <% end %>
+
+
 
 
