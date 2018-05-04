@@ -9,8 +9,7 @@ class PostInfosController < ApplicationController
   
 
   def index
-     @search = PostInfo.search(params[:q])
-     @post_infos = @search.result
+     
   end
 
   def new
@@ -70,8 +69,20 @@ class PostInfosController < ApplicationController
 
   def search  
      @search = PostInfo.search(params[:q])
-     pp @search.result.to_sql
+     #pp @search.result.to_sql
+     #@post_infos = @search.result
+     pp "================="
+     pp params[:q]
+     pp params[:commit]
+     pp "================="
+     
      @post_infos = @search.result
+
+    #@users = @q.result.paginate(:per_page =>10, :page => params[:page])
+
+    #.will_paginate(page: params[:page], per_page: params[:per_page])
+                    #search.result.paginate(page: params[:page], per_page: params[:per_page])
+
   end 
 
 end

@@ -1,7 +1,7 @@
 <br>
 <!-- Searchy searchy -->
 
-<%= search_form_for @search do |f| %>
+<%= search_form_for @search, url: post_infos_search_path do |f| %>
 	<!-- <div class="field">
 		< %= f.label  "Titel börjar med" %>
 		< %= f.check_box :title_start %>
@@ -20,8 +20,8 @@
 	</div>
 	<div class="field">
 		<!-- ISSN should maybe be equal to? -->
-		<%= f.label :issn_cont, "ISSN" %>
-		<%= f.text_field :issn_cont %>
+		<%= f.label :issn_eq, "ISSN" %>
+		<%= f.text_field :issn_eq %>
 	</div>
 	<div class="field">
 		<%= f.label :operation_id_cont, "Åtgärd" %>
@@ -35,6 +35,9 @@
 
 <% end %>
 
-
-
+<% if params[:commit] != nil %>
+	<%= render 'searchpretty' %>
+	<% elsif%>
+	<%= "Nopes" %>
+<% end %>
 
