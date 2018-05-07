@@ -8,7 +8,7 @@
 			<th><%= sort_link @search, :title, "Titel"  %>			</th>
 			<th><%= sort_link @search, :publisher, "Utgivare" %>	</th>
 			<th><%= sort_link @search, :issn, "ISSN" %> 			</th>
-			<th> Åtgärd	</th>
+			<th><%= sort_link @search, :operation_id, "Åtgärd" %> 	</th>
 			<th><%= sort_link @search, :created_by, "Skapad av" %> 		</th>
 			<th><%= sort_link @search, :updated_by, "Ändrad av" %> </th>
 			<th><%= sort_link @search, :updated_at, "Senast uppdaterad" %>			</th>
@@ -21,7 +21,11 @@
 			<td>	<%= link_to p.title, post_info_path(p) %> </td>
 			<td>	<%= p.publisher %> </td>
 	 		<td>	<%= p.issn %> </td>
-			<td>	<%= Operation.find(p.operation_id).operation_type %> </td>
+			<td>	<%  if Operation.find_by(id: p.operation_id)   %>
+					<%=	Operation.find_by(id: p.operation_id).operation_type %> 
+					<%  else %>
+					<%=	"Okänd" %>
+					<% end %> </td>
 			<td>	<%= p.created_by %> </td>
 			<td>	<%= p.updated_by %> </td>
 			<td>	<%= p.updated_at.to_date %> </td>

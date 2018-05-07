@@ -3,8 +3,12 @@
 <br>
 
 <h2> Titel:  <%= @post_info.title %> </h2>
-	<b> Åtgärd: 			</b><%= Operation.find(@post_info.operation_id).operation_type %> <br>
-
+	<b> Åtgärd: 			</b><%  if Operation.find_by(id: @post_info.operation_id)   %>
+					<%=	Operation.find_by(id: @post_info.operation_id).operation_type %> 
+					<%  else %>
+					<%=	"Okänd" %>
+					<% end %>
+ <br>
 	<b> Utgivare:  		</b><%= @post_info.publisher %> <br>
 	<b> ISSN:  				</b><%= @post_info.issn %> <br>
 	

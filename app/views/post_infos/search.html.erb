@@ -24,10 +24,9 @@
 		<%= f.text_field :issn_eq %>
 	</div>
 	<div class="field">
-		<%= f.label :operation_id_cont, "Åtgärd" %>
-		<%= collection_select(:post_info, :operation_id, Operation.all.order("operation_type"), 
-													:id, :operation_type, :prompt => "Välj") %>
-		<!-- %= f.text_field :operation_id_cont %> -->
+		<%= f.label :operation_id_eq, "Åtgärd" %>
+		<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
+					'id', 'operation_type', :prompt => "Välj"), include_blank: true %>
 	</div>
 	<div class="actions">
 		<%= f.submit "Sök" %>
