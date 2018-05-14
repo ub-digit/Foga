@@ -35,6 +35,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Ransak for search capability
 # See https://github.com/activerecord-hackery/ransack for updates etc.
 gem 'ransack'
+# Pagination
+gem "will_paginate", "~> 3.0.4" 
+# Nullifies empty strings
+gem 'nilify_blanks'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
