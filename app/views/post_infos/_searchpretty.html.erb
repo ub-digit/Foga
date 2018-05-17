@@ -3,6 +3,9 @@
 <br>
 <h3> <%= @post_infos.count %> Träffar </h3>
 <br><br>
+<%= will_paginate @post_infos %> 
+
+<br><br>     
 <table>
 	<tr>
 			<th><%= sort_link @search, :title, "Titel"  %>			</th>
@@ -34,4 +37,7 @@
 		</tr>
 	<% end %>
 </table>
+
+<br><br>
+
 	

@@ -68,21 +68,10 @@ class PostInfosController < ApplicationController
   end
 
   def search  
-     @search = PostInfo.search(params[:q])
-     #pp @search.result.to_sql
-     #@post_infos = @search.result
-     pp "================="
-     pp params[:q]
-     pp params[:commit]
-     pp "================="
+    params[:q].permit!
+    @search = PostInfo.search(params[:q])
      
-     @post_infos = @search.result
-
-    #@users = @q.result.paginate(:per_page =>10, :page => params[:page])
-
-    #.will_paginate(page: params[:page], per_page: params[:per_page])
-                    #search.result.paginate(page: params[:page], per_page: params[:per_page])
-
+    @post_infos = @search.result.paginate(:page => params[:page], :per_page => 3)
   end 
 
 end
