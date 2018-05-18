@@ -68,10 +68,12 @@ class PostInfosController < ApplicationController
   end
 
   def search  
-    params[:q].permit!
+    if params[:q] != nil
+      params[:q].permit!
+    end
     @search = PostInfo.search(params[:q])
      
-    @post_infos = @search.result.paginate(:page => params[:page], :per_page => 3)
+    @post_infos = @search.result.paginate(:page => params[:page], :per_page => 5)
   end 
 
 end
