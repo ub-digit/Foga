@@ -1,43 +1,54 @@
+    
 
+<body>
 
-<br>
-<h3> <%= @post_infos.count %> Träffar </h3>
-<br><br>
-<%= will_paginate @post_infos %> 
+	<br>
+	<h3> <%= @post_infos.count %> Träffar </h3>
+	<br><br>
+	<%= will_paginate @post_infos %> 
 
-<br><br>     
-<table>
-	<tr>
-			<th><%= sort_link @search, :title, "Titel"  %>			</th>
-			<th><%= sort_link @search, :publisher, "Utgivare" %>	</th>
-			<th><%= sort_link @search, :issn, "ISSN" %> 			</th>
-			<th><%= sort_link @search, :operation_id, "Åtgärd" %> 	</th>
-			<th><%= sort_link @search, :created_by, "Skapad av" %> 		</th>
-			<th><%= sort_link @search, :updated_by, "Ändrad av" %> </th>
-			<th><%= sort_link @search, :updated_at, "Senast uppdaterad" %>			</th>
-		<!--	<th>Comment 		</th> Displayed only on show page. --> 
-			
-	</tr>
-
-	<% @post_infos.each do |p| %>
+	<br><br>     
+	<table class="table">
 		<tr>
-			<td>	<%= link_to p.title, post_info_path(p) %> </td>
-			<td>	<%= p.publisher %> </td>
-	 		<td>	<%= p.issn %> </td>
-			<td>	<%  if Operation.find_by(id: p.operation_id)   %>
-					<%=	Operation.find_by(id: p.operation_id).operation_type %> 
-					<%  else %>
-					<%=	"Okänd" %>
-					<% end %> </td>
-			<td>	<%= p.created_by %> </td>
-			<td>	<%= p.updated_by %> </td>
-			<td>	<%= p.updated_at.to_date %> </td>
-			<!-- < %= p.comment %><br> -->
-
+				<th><%= sort_link @search, :title, "Titel"  %>			</th>
+				<th><%= sort_link @search, :publisher, "Utgivare" %>	</th>
+				<th><%= sort_link @search, :issn, "ISSN" %> 			</th>
+				<th><%= sort_link @search, :operation_id, "Åtgärd" %> 	</th>
+				<th><%= sort_link @search, :created_by, "Skapad av" %> 		</th>
+				<th><%= sort_link @search, :updated_by, "Ändrad av" %> </th>
+				<th><%= sort_link @search, :updated_at, "Senast uppdaterad" %>			</th>
+				<th> Kommentar 		</th> 
+				
 		</tr>
-	<% end %>
-</table>
 
-<br><br>
+		<% @post_infos.each do |p| %>
+			<tr>
+				<td>	<%= link_to p.title, post_info_path(p) %> </td>
+				<td>	<%= p.publisher %> </td>
+		 		<td>	<%= p.issn %> </td>
+				<td>	<%  if Operation.find_by(id: p.operation_id)   %>
+						<%=	Operation.find_by(id: p.operation_id).operation_type %> 
+						<%  else %>
+						<%=	"Okänd" %>
+						<% end %> </td>
+				<td>	<%= p.created_by %> </td>
+				<td>	<%= p.updated_by %> </td>
+				<td>	<%= p.updated_at.to_date %> </td>
+				<td>	<%	if p.comment !=""  %>	<button type="button"  class="btn btn-secondary" 
+					data-trigger="focus"
+					data-toggle="popover" data-placement="left" 
+					data-content="<%= p.comment  %>" > Anmärkning </button>	<% end %> </td>
+				
+			</tr>
+		<% end %>
+	</table>
 
-	
+	<br><br>
+	<script>
+	$(document).ready(function(){
+	    $('[data-toggle="popover"]').popover();   
+	});
+	</script>
+
+
+</body>	
