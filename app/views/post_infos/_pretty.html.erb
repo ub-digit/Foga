@@ -5,30 +5,29 @@
 	<tr>
 			<th>Titel 			</th>
 			<th>Utgivare 		</th>
-			<th>ISSN 				</th>
 			<th>Åtgärd 			</th>
-			<th>Skapad av 	</th>
-			<th>Ändrad av 	</th>
-			<th>Senast updaterad </th>
-		<!--	<th>Comment 		</th> Displayed only on show page. --> 
+			<!-- <th>Kommentar 		</th>  -->
+			<th>ISSN 			</th>
+			<th>Skapad av 		</th>
+			<th>Ändrad av 		</th>
+			<th>Senast updaterad 	</th>
 	</tr>
 
 	<% @post_infos.each do |p| %>
 		<tr>
 
-			<td>	<%= link_to p.title, post_info_path(p) %> 					</td>
-			<td>	<%= p.publisher %> 																	</td>
-	 		<td>	<%= p.issn %> 																			</td>
+			<td>	<%= link_to p.title, post_info_path(p) %> 	</td>
+			<td>	<%= p.publisher %> 	</td>
 			<td>	<%  if Operation.find_by(id: p.operation_id)   %>
 					<%=	Operation.find_by(id: p.operation_id).operation_type %> 
 					<%  else %>
 					<%=	"Okänd" %>
-					<% end %> </td>
-			<td>	<%= p.created_by %> 																</td>
-			<td>	<%= p.updated_by %> 																</td>
-			<td>	<%= p.updated_at.to_date %> 												</td>
-
-			<!-- < %= p.comment %><br> -->
+					<% end %> 					</td>
+			<!-- <td>	< %= p.comment %> 		</td> -->
+	 		<td>	<%= p.issn %>				</td>
+			<td>	<%= p.created_by %> 		</td>
+			<td>	<%= p.updated_by %> 		</td>
+			<td>	<%= p.updated_at.to_date %> 	</td>
 		</tr>
 	<% end %>
 </table>

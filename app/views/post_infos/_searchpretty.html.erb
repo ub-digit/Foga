@@ -11,29 +11,29 @@
 		<tr>
 			<th><%= sort_link @search, :title, "Titel"  %>			</th>
 			<th><%= sort_link @search, :publisher, "Utgivare" %>	</th>
-			<th><%= sort_link @search, :issn, "ISSN" %> 				</th>
 			<th><%= sort_link @search, :operation_id, "Åtgärd" %> 	</th>
+			<th> Kommentar 	</th> 
+			<th><%= sort_link @search, :issn, "ISSN" %> 				</th>
 			<th><%= sort_link @search, :created_by, "Skapad av" %>	</th>
 			<th><%= sort_link @search, :updated_by, "Ändrad av" %> 	</th>
 			<th><%= sort_link @search, :updated_at, "Senast uppdaterad" %>		</th>
-			<th> Kommentar 	</th> 
 		</tr>
 
 		<% @post_infos.each do |p| %>
 			<tr>
 				<td>	<%= link_to p.title, post_info_path(p) %>		</td>
 				<td>	<%= p.publisher %>	</td>
-		 		<td>	<%= p.issn %>			</td>
 				<td>	<%  if Operation.find_by(id: p.operation_id) %>
 						<%=	Operation.find_by(id: p.operation_id).operation_type %> 
 						<%  else %>		<%= "Okänd" %>		<% end %> 	</td>
-				<td>	<%= p.created_by %>	</td>
-				<td>	<%= p.updated_by %> 	</td>
-				<td>	<%= p.updated_at.to_date %>		</td>
-				<td>	<%	if p.comment !="" %>	
+				<td>	<%	if p.comment and p.comment != "" %>	
 					<button type="button"  class="btn btn-secondary" 
 					data-trigger="focus" data-toggle="popover" data-placement="left" 
 					data-content="<%= p.comment  %>" > Anmärkning </button>	<% end %> 	</td>
+		 		<td>	<%= p.issn %>			</td>
+				<td>	<%= p.created_by %>	</td>
+				<td>	<%= p.updated_by %> 	</td>
+				<td>	<%= p.updated_at.to_date %>		</td>
 			</tr>
 		<% end %>
 	</table>
