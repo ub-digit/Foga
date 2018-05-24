@@ -14,12 +14,12 @@
 		</ul>
 	<% end %>
 
-	<%= f.label :operation_type, "Åtgärd" %> <br>
+	<%= f.label :operation_type, "Åtgärd *" %>	<br>
 	<%= f.text_field :operation_type, :maxlength => 20%>
 	<br><br>
-	<%= f.label :description, "Kort beskrivning" %><br>
+	<%= f.label :description, "Kort beskrivning" %>	<br>
 	<%= f.text_area :description, size: "40x4", :maxlength => 60 %>
 	<br><br>
-	<%= f.submit "Spara", :disable_with => 'Submiting...' %>
+	<%= f.submit "Spara", :disable_with => 'Submitting...' %>
 <% end %>
 </div>

@@ -1,20 +1,16 @@
 
-
-<h3> <%= link_to "Ny åtgärd", new_operation_path %> </h3>
-
 <table>
 	<tr>
 		<h3>
-			<th>Operation type 	</th>
-			<th>Description 	</th>
+			<th> Åtgärd 		</th>
+			<th> Beskrivning	</th>
 		</h3>
 	</tr>
 
-<% @operations.each do |o| %>
-	<tr>
-		<td><%= link_to o.operation_type, edit_operation_path(o) %> </td>
-			<!-- < %= link_to o.operation_type, operation_path(o) %> </td> -->
-		<td> <%= o.description %> </td>
-	</tr>
-<% end %>
+	<% @operations.each do |o| %>
+		<tr>
+			<td> <%= link_to o.operation_type, edit_operation_path(o) %>	</td>
+			<td> <%= o.description %>	 </td>
+		</tr>
+	<% end %>
 </table>

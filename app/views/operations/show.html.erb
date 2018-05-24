@@ -1,17 +1,9 @@
 
-
 <div>
-	<br><br>
-	<h3> <%= link_to "Ny åtgärd", new_operation_path %> </h3>
-
+   <h3> Ny åtgärd skapades. </h3>
+   <br><br>
+   <b> Åtgärd:       </b>  <%= @operation.operation_type %>  <br>
+   <b> Beskrivning:  </b>	<%= @operation.description %>     <br>
 </div>
-
-<!-- Ny åtgärd skapades.  -->
-
-
-<h4> Operation type:  		<%= @operation.operation_type %> </h4>
-	<b> Description:  </b>	<%= @operation.description %> <br>
-	
-<!--	<b> Operation Id:  </b>	<%=  @operation.id %> <br> -->
 
 	

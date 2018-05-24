@@ -12,7 +12,7 @@
 			<th><%= sort_link @search, :title, "Titel"  %>			</th>
 			<th><%= sort_link @search, :publisher, "Utgivare" %>	</th>
 			<th><%= sort_link @search, :operation_id, "Åtgärd" %> 	</th>
-			<th> Kommentar 	</th> 
+			<th> Anmärkning 	</th> 
 			<th><%= sort_link @search, :issn, "ISSN" %> 				</th>
 			<th><%= sort_link @search, :created_by, "Skapad av" %>	</th>
 			<th><%= sort_link @search, :updated_by, "Ändrad av" %> 	</th>
@@ -26,10 +26,12 @@
 				<td>	<%  if Operation.find_by(id: p.operation_id) %>
 						<%=	Operation.find_by(id: p.operation_id).operation_type %> 
 						<%  else %>		<%= "Okänd" %>		<% end %> 	</td>
+
 				<td>	<%	if p.comment and p.comment != "" %>	
 					<button type="button"  class="btn btn-secondary" 
 					data-trigger="focus" data-toggle="popover" data-placement="left" 
 					data-content="<%= p.comment  %>" > Anmärkning </button>	<% end %> 	</td>
+		 		
 		 		<td>	<%= p.issn %>			</td>
 				<td>	<%= p.created_by %>	</td>
 				<td>	<%= p.updated_by %> 	</td>
