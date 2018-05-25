@@ -1,46 +1,56 @@
 <br>
 <!-- Searchy searchy -->
+<div class="container-fluid">
+	<%= search_form_for @search, url: post_infos_search_path do |f| %>
+		<!-- <div class="field">
+			< %= f.label  "Titel börjar med" %>
+			< %= f.check_box :title_start %>
+			< %= f.text_field :title_start %>			
+		</div> -->
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+				<div class="field">
+					<%=  # to search for any of the terms existing in my_field
+						 f.label :title_has_every_term, "Titel innehåller" %>
+			  		<%= f.text_field  :title_has_every_term %>
+				</div>
+				<div class="field">
+					<%= f.label :publisher_cont, "Utgivare" %>
+					<%= f.text_field :publisher_cont %>
+				</div>
+				<div class="field">
+					<%= f.label :issn_eq, "ISSN" %>
+					<%= f.text_field :issn_eq %>
+				</div>
+			</div>
 
-<%= search_form_for @search, url: post_infos_search_path do |f| %>
-	<!-- <div class="field">
-		< %= f.label  "Titel börjar med" %>
-		< %= f.check_box :title_start %>
-		< %= f.text_field :title_start %>			
-	</div> -->
+			<div class="col-md-3">
+				<div class="field">
+					<%= f.label :operation_id_eq, "Åtgärd" %>
+					<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
+								'id', 'operation_type', :prompt => "Välj"), include_blank: true %>
+				</div>
+				<div class="field">
+					<%= f.label :created_at_gteq, "Från" %>
+					<%= f.date_field :created_at_gteq %>
+				</div>
+				<div class="field">
+					<%= f.label :created_at_lteq, "Till" %>
+					<%= f.date_field :created_at_lteq %>
+				</div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		
+		<br>
+		<div class="actions">
+			<%= f.submit "Sök" %>
+		</div>
 
-	<div class="field">
-		<%=  # to search for any of the terms existing in my_field
-			 f.label :title_has_every_term, "Titel innehåller" %>
-  		<%= f.text_field  :title_has_every_term %>
-	</div>
+	<% end %>
+</div>
 
-	<div class="field">
-		<%= f.label :publisher_cont, "Utgivare" %>
-		<%= f.text_field :publisher_cont %>
-	</div>
-	<div class="field">
-		<%= f.label :issn_eq, "ISSN" %>
-		<%= f.text_field :issn_eq %>
-	</div>
-	<div class="field">
-		<%= f.label :operation_id_eq, "Åtgärd" %>
-		<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
-					'id', 'operation_type', :prompt => "Välj"), include_blank: true %>
-	</div>
-	<div class="field">
-		<%= f.label :created_at_gteq, "Från" %>
-		<%= f.date_field :created_at_gteq %>
-	</div>
-	<div class="field">
-		<%= f.label :created_at_lteq, "Till" %>
-		<%= f.date_field :created_at_lteq %>
-	</div>
-	<br>
-	<div class="actions">
-		<%= f.submit "Sök" %>
-	</div>
-
-<% end %>
 
 <% if params[:commit] != nil %>
 	<%= render 'searchpretty' %>
