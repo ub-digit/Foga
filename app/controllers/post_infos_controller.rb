@@ -64,7 +64,8 @@ class PostInfosController < ApplicationController
     if @days == 0
       @days = 7
     end
-    @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", @days).order("updated_at DESC")
+    @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", 
+                      @days).order("updated_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   def search  
