@@ -1,7 +1,8 @@
 
 
 
-<table>
+<table class="table table-striped table-bordered table-hover">
+	<thead>
 	<tr>
 			<th>Titel 			</th>
 			<th>Utgivare 		</th>
@@ -12,10 +13,10 @@
 			<th>Ändrad av 		</th>
 			<th>Senast updaterad 	</th>
 	</tr>
+	</thead>
 
 	<% @post_infos.each do |p| %>
 		<tr>
-
 			<td>	<%= link_to p.title, post_info_path(p) %> 	</td>
 			<td>	<%= p.publisher %> 	</td>
 			<td>	<%  if Operation.find_by(id: p.operation_id)   %>

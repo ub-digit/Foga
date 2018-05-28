@@ -7,20 +7,23 @@
       I.e. only one link. Text with info should NOT be hardcoded. 
       If entering no. of days via url...
  -->
-<table>
+<br>
+<table class="table table-bordered">
+
    <tr>
-      <th><h3>  Visar <%= @days %> dagar bakåt </h3></th>
-      <th></th>
-      <th>
+      <th><h4> Visar <%= @days %> dagar bakåt </h4></th>
+   
+      <th><h4>
          <% if @days > 7 %>
             <%= link_to("Senaste 7 dagarna", {:action => 'latest', :days => 7}) %>
          <% else %>
             <%= link_to("Senaste 30 dagarna", {:action => 'latest', :days => 30}) %>
          <% end %>
-      </th>
+      </h4></th>
    </tr>
+   
 </table>
-<br>
+
 
 <h3> <%= @post_infos.count %> Träffar </h3>
 
