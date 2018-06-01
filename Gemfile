@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'ransack'
 # Pagination
 gem "will_paginate", "~> 3.0.4" 
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 # Nullifies empty strings
 gem 'nilify_blanks'
 

@@ -24,7 +24,7 @@
    
 </table>
 
-<%= will_paginate @post_infos %> 
+<center> <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %> </center>
 <h3> <%= @post_infos.count %> Träffar </h3>
 
 

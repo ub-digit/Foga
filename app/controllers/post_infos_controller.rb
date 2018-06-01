@@ -65,7 +65,7 @@ class PostInfosController < ApplicationController
       @days = 7
     end
     @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", 
-                      @days).order("updated_at DESC").paginate(:page => params[:page], :per_page => 8)
+                      @days).order("updated_at DESC").paginate(:page => params[:page])
   end
 
   def search  
@@ -73,8 +73,10 @@ class PostInfosController < ApplicationController
       params[:q].permit!
     end
     @search = PostInfo.search(params[:q])
-     
-    @post_infos = @search.result.paginate(:page => params[:page], :per_page => 8)
+    pp "contr"
+    pp params[:per_page]
+    @post_infos = @search.result.paginate(page: params[:page], per_page: params[:per_page])
+    #(:page => params[:page])
   end 
 
 end
@@ -87,5 +89,6 @@ def find_postinfo
 end
 
 def post_params
-	params.require(:post_info).permit(:title, :publisher, :issn, :comment, :created_by, :updated_by, :operation_id)
+	params.require(:post_info).permit(:title, :publisher, :issn, :comment, :created_by,
+                                     :updated_by, :operation_id, :per_page)
 end

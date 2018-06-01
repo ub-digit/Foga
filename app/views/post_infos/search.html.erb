@@ -25,7 +25,7 @@
 				</div>
 				<br>
 				<div class="actions" align="right">
-					<%= f.submit "Sök" %>
+					<h4> <%= f.submit "Sök" %></h4>
 				</div>
 			</div>
 
@@ -33,7 +33,8 @@
 				<div class="field">
 					<%= f.label :operation_id_eq, "Åtgärd" %>
 					<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
-								'id', 'operation_type', :prompt => "Välj"), include_blank: true %>
+								'id', 'operation_type', @search.operation_id_eq),
+								include_blank: true, :prompt => "Välj"	%>
 				</div>
 				<div class="field">
 					<%= f.label :created_at_gteq, "Från" %>
@@ -44,18 +45,49 @@
 					<%= f.date_field :created_at_lteq %>
 				</div>
 			</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<!-- %= f.select :per_page, options_from_collection_for_select([25, 60], 'id', 'per_page') % -->
+			</div>
 		</div>
 		
 
 	<% end %>
 </div>
 
+<!-- Need to do some sort of save or submit action when this is set. -->
+<select id="per_page_select">
+  <% [10, 20, 50, 100].each do |per_pages| %>
+    <option data-url="<%= post_infos_search_path per_page: per_pages %>"><%= per_pages %></option>
+  <% end %>
+  <!-- option value="">< %= :per_page % ></option -->
+</select>
+
+
+<script >
+	$(document).on('change', '#per_page_select', function () {
+/* win.loc.href is the current url
+if per_page already exists in url
+	set it to "new" value
+else -> add
+*/
+
+	    console.log('href --- '+ window.location.href);
+	    //this adds on &per_page or every load... ._. but does change
+	    window.location.href = window.location.href + '&per_page=' + this.options[this.options.selectedIndex].value;
+	    
+	    console.log('href +++ '+ window.location.href);
+	    console.log(window.location);
+	    console.log('BOB'+this.baseURI +'&per_page='+this.options[this.options.selectedIndex].value);
+	    console.log('BOB'+this.baseURI);
+	    	    
+	});
+</script>
+
 
 <% if params[:commit] != nil %>
 	<%= render 'searchpretty' %>
-	<% elsif%>
-	<br>
+<% elsif%>
+	<br><br>
 	<%= "Tom sökning" %>
 <% end %>
 

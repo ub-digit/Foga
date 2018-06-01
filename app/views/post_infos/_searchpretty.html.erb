@@ -3,8 +3,9 @@
 
 	<br>
 	<h3> <%= @post_infos.count %> Träffar </h3>
+	
 	<br><br>
-	<%= will_paginate @post_infos %> 
+	<center> <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %> </center>
 
 	<br><br>     
 	<table class="table table-striped table-bordered table-hover">

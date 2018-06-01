@@ -17,4 +17,6 @@ class PostInfo < ApplicationRecord
 	validates :updated_by, 
 		:presence => {message: 'Updaterad av får inte vara tom.'}
 
+	self.per_page = 10
+
 end
