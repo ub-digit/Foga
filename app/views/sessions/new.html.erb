@@ -1,0 +1,17 @@
+
+new session
+
+<h2>Logga in</h2>
+<br>
+<%= form_for :session, url: '/login' do |f| %>
+   <%= f.label :xname, "Namn: " %>
+   <%= f.text_field :xname %><br>
+   <%= f.label :password, "Lösenord: " %>
+   <%= f.password_field :password %><br>
+
+   
+   <div class="actions"><br>
+      <%= f.submit "Spara" %> 
+   </div>
+
+<% end %>

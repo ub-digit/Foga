@@ -6,6 +6,7 @@ class PostInfosController < ApplicationController
 # available to the stated functions show, edit, update and destroy. This is 
 # done before any other action. Duh)
   before_action :find_postinfo, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:edit]
   
 
   def index
@@ -44,7 +45,7 @@ class PostInfosController < ApplicationController
   def update
     # When a post, should set updated_by automatically to the currently logged in user.
 
-    #trying to disallow changing created by when in update mode
+    #trying to disallow changing created_by when in update mode
     #org_created_by = @post_info.created_by
     #post_params.created_by = @post_info.created_by
   	if @post_info.update(post_params)

@@ -2,15 +2,25 @@ Rails.application.routes.draw do
   
 
 
- #  Started using Ransack bundle. Search on title implemented but not displayed correctly.
-  #get 'operations/index'
+#get 'operations/index'
 
 
-  get 'post_infos/latest'
-  get 'post_infos/search'
+get 'post_infos/latest'
+get 'post_infos/search'
 
 resources :post_infos
 resources :operations
+
+ # These routes will be for signup. The first renders a form in the browse, the second will 
+ # receive the form and create a user in our database using the data given to us by the user.
+ get '/signup' => 'users#new'
+ post '/users' => 'users#create'
+
+ # these routes are for showing users a login form, logging them in, and logging them out.
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
 
 
 root 'post_infos#search'

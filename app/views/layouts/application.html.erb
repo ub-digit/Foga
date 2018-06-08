@@ -20,6 +20,7 @@
   <body>
 				<!-- when using <li> tab can have if then conditions. 
           E.g. if logged in as admin show new/edit operations link. Look into that! -->
+    <!-- added these lines.-->
 
   <nav class="navbar navbar-default "> 
     <div class="container-fluid"> 
@@ -31,7 +32,18 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<%=new_post_info_path %>"> NY POST </a> </li>
         <li><a href="<%=operations_path %>"> ÅTGÄRDER </a> </li>
-				<li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
+        <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
+        
+        <% if @current_user %>
+          <li>INLOGGAD SOM <%= @current_user.name %></li>        
+          <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
+          <!-- Inloggad som < %= @current_user.name % > | < %= link_to "Logga ut", '/logout' % > -->
+        <% else %>
+          <li><a href="<%=login_path %>">  LOGGA IN </a> </li>
+          <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
+        
+          <!--< %= link_to 'Logga in', '/login' % > | < %= link_to 'Signup', '/signup' % > -->
+        <% end %>
 			</ul>
 		</div>
 	</nav>

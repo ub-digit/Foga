@@ -1,0 +1,30 @@
+user index
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Logga in</title>
+</head>
+<body>
+   <h2>
+      Logga in
+   </h2>
+
+   <form>
+ <!--   < %= form_for :user, url: '/login' do |f| % >
+      < %= f.label :xname, "Namn: " % >
+      < %= f.text_field :xname % ><br>
+      < %= f.label :password, "Lösenord: " % >
+      < %= f.password_field :password % ><br>
+ -->
+      
+      <input type="xname " name="login[xname]" placeholder="Användarnamn">
+      <input type="password" name="login[password]" placeholder="Lösenord">
+      <!--<input type="submit" name="submit" class="submit" -->
+      <div class="actions"><br>
+      <%= f.submit "Spara" %> 
+      </div>
+   <!--  % end -% -->
+   </form>
+</body>
+</html>
