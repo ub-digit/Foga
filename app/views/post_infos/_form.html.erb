@@ -20,10 +20,10 @@
 	</div>
 	<br>
 	
-	<%= f.label :title, "Titel *" %><br>
+	<%= f.label :title, "Titel *" %>
 	<%= f.text_field :title %><br>
 	<br>
-	<%= f.label :publisher, "Utgivare *" %><br>
+	<%= f.label :publisher, "Utgivare *" %>
 	<%= f.text_field :publisher %><br>
 	<br>
 	<%= f.label :operation_id, "Åtgärd *" %> 
@@ -31,13 +31,13 @@
 				Operation.all.order("operation_type"), 
 				:id, :operation_type, :prompt => "Välj") %>
 	<br><br>
-	<%= f.label :issn, "ISSN" %><br>
+	<%= f.label :issn, "ISSN" %>
 	<%= f.text_field :issn %><br>
 	<br>
-	<%= f.label :comment, "Anmärkning" %><br>
+	<%= f.label :comment, "Anmärkning" %>
 	<%= f.text_area :comment, size: "50x10" %><br>
 	<br>
-	<%= f.label "Person *" %><br>
-	<%= f.text_field :created_by %><br>
-	<%= f.text_field :updated_by %><br>
+	<!-- < %= f.label "Person *" %><br>
+	< %= f.text_field :created_by %><br>
+	< %= f.text_field :updated_by %><br> -->
 <% end %>

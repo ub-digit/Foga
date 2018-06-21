@@ -4,17 +4,19 @@ def new
 end
 
 def create
-   user = User.find_by_xname(params[:xname])
-    # If the user exists AND the password entered is correct.
-    if user && user.authenticate(params[:password])
+   user = User.find_by_xname(params[:session][:xname])
+
+   # If the user exists AND the password entered is correct.
+   if user && user.authenticate(params[:session][:password])
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
       session[:user_id] = user.id
       redirect_to post_infos_latest_path
-    else
+   else
     # If user's login doesn't work, send them back to the login form.
+      pp "ERROR"
       redirect_to '/login'
-    end
+   end
 end
 
 def destroy

@@ -35,14 +35,12 @@
         <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
         
         <% if @current_user %>
-          <li>INLOGGAD SOM <%= @current_user.name %></li>        
+          <li><a><b>INLOGGAD SOM: <br>
+              <%= @current_user.xname %> </b> </a> </li>        
           <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
-          <!-- Inloggad som < %= @current_user.name % > | < %= link_to "Logga ut", '/logout' % > -->
         <% else %>
           <li><a href="<%=login_path %>">  LOGGA IN </a> </li>
           <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
-        
-          <!--< %= link_to 'Logga in', '/login' % > | < %= link_to 'Signup', '/signup' % > -->
         <% end %>
 			</ul>
 		</div>

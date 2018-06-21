@@ -11,13 +11,13 @@
 <table class="table table-bordered">
 
    <tr>
-      <th><h4> Visar <%= @days %> dagar bakåt </h4></th>
+      <th><h4> VISAR <%= @days %> DAGAR BAKÅT </h4></th>
    
       <th><h4>
          <% if @days > 7 %>
-            <%= link_to("Senaste 7 dagarna", {:action => 'latest', :days => 7}) %>
+            <%= link_to("SENASTE 7 DAGARNA", {:action => 'latest', :days => 7}) %>
          <% else %>
-            <%= link_to("Senaste 30 dagarna", {:action => 'latest', :days => 30}) %>
+            <h4> <%= link_to("SENASTE 30 DAGARNA", {:action => 'latest', :days => 30}) %> </h4>
          <% end %>
       </h4></th>
    </tr>

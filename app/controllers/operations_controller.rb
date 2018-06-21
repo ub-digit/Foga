@@ -1,6 +1,6 @@
 class OperationsController < ApplicationController
   before_action :find_operation, only:[:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:new, :edit, :destroy]
+  before_action :authenticate
 
   def index
   	@operations = Operation.all.order("operation_type")

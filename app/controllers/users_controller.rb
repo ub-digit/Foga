@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  before_action :user_params, only:[:create, :login]
+
 
    def new
    end
 
    def create
-     user = User.new(user_params)
+      user = User.new(user_params)
       if user.save
          session[:user_id] = user.id
          redirect_to post_infos_latest_path
@@ -14,11 +16,11 @@ class UsersController < ApplicationController
    end
 
    def login
-     @user = User.find_by_xname(params[:xname])
-     if @user.password == params[:password]
+     user = User.find(params[:xname])
+     if user.password == params[:password]
        give_token
      else
-       redirect_to '/'
+      redirect_to '/'
      end
    end
 

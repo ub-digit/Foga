@@ -1,13 +1,10 @@
 class PostInfosController < ApplicationController
 
-
-
 # This finds the current object (with the passed in id, and is thereafter 
 # available to the stated functions show, edit, update and destroy. This is 
 # done before any other action. Duh)
   before_action :find_postinfo, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit]
-  
+  before_action :authenticate
 
   def index
      
@@ -25,6 +22,7 @@ class PostInfosController < ApplicationController
     #@post_info = current_user.post_info.build(post_params)
 
   	@post_info = PostInfo.new(post_params)
+    @post_info.created_by = @current_user.xname
     @post_info.updated_by = @post_info.created_by
   	
     if @post_info.save
@@ -43,12 +41,10 @@ class PostInfosController < ApplicationController
   end
 
   def update
-    # When a post, should set updated_by automatically to the currently logged in user.
+    # When updating a post, should set updated_by automatically to the currently logged in user.
 
-    #trying to disallow changing created_by when in update mode
-    #org_created_by = @post_info.created_by
-    #post_params.created_by = @post_info.created_by
-  	if @post_info.update(post_params)
+    @post_info.updated_by = @current_user.xname
+    if @post_info.update(post_params) 
   		redirect_to @post_info
   	else
   		render 'edit'
@@ -74,8 +70,8 @@ class PostInfosController < ApplicationController
       params[:q].permit!
     end
     @search = PostInfo.search(params[:q])
-    pp "contr"
-    pp params[:per_page]
+    #pp "contr"
+    #pp params[:per_page]
     @post_infos = @search.result.paginate(page: params[:page], per_page: params[:per_page])
     #(:page => params[:page])
   end 
@@ -90,6 +86,7 @@ def find_postinfo
 end
 
 def post_params
-	params.require(:post_info).permit(:title, :publisher, :issn, :comment, :created_by,
-                                     :updated_by, :operation_id, :per_page)
+	params.require(:post_info).permit(:title, :publisher, :issn, :comment, #:created_by,
+                                     #:updated_by, 
+                                     :operation_id, :per_page)
 end
