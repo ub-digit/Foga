@@ -1,19 +1,32 @@
 
-<br>
-<h2>NY ANVÄNDARE</h2>
-<br>
-<%= form_for :user, url: '/users' do |f| %>
-   <%= f.label :xname, "Namn: " %>
-   <%= f.text_field :xname %><br>
-   <%= f.label :password, "Lösenord: " %>
-   <%= f.password_field :password %><br>
-   <%= f.label :password_confirmation, "Bekräfta lösenord: " %>
-   <%= f.password_field :password_confirmation %><br>
-      
 
-   
-   <div class="actions"><br>
-      <%= f.submit "Spara" %> 
+<div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-4">
+            <h2>NY ANVÄNDARE</h2> <br>
+            <%= form_for :user, url: '/users' do |f| %>
+               <%= f.label :xname, "x-konto: " %>
+               <%= f.text_field :xname %><br>
+               
+               <%= f.label :name, "Namn: " %>
+               <%= f.text_field :name %><br>
+               
+               <%= f.label :password, "Lösenord: " %>
+               <%= f.password_field :password %><br>
+               
+               <%= f.label :password_confirmation, "Bekräfta lösenord: " %>
+               <%= f.password_field :password_confirmation %><br>
+                  
+               <%= f.label :is_admin, "Administratör:  " %>
+               <%= f.check_box :is_admin %>
+               
+               <div class="actions"><br>
+                  <%= f.submit "Spara" %> 
+               </div>
+            <% end %>
+         <div class="col-md-4"></div>
+      </div>
    </div>
 
-<% end %>
+<br>

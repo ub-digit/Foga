@@ -24,25 +24,38 @@
 
   <nav class="navbar navbar-default "> 
     <div class="container-fluid"> 
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="<%=post_infos_search_path %>">SÖK</a> </li>
-        <li><a href="<%=post_infos_latest_path %>">SENASTE POSTER</a> </li>
-      </ul>
+      <div class="row">
+          <% if @current_user %> 
+          <div class="col-md-4">
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="<%=new_post_info_path %>"> NY POST </a> </li>
+              <li><a href="<%=operations_path %>"> ÅTGÄRDER </a> </li>
+              <% if @current_user && @current_user.is_admin %>
+                <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
+              <% end %>
+            </ul>
+          </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%=new_post_info_path %>"> NY POST </a> </li>
-        <li><a href="<%=operations_path %>"> ÅTGÄRDER </a> </li>
-        <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
-        
-        <% if @current_user %>
-          <li><a><b>INLOGGAD SOM: <br>
-              <%= @current_user.xname %> </b> </a> </li>        
-          <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
-        <% else %>
-          <li><a href="<%=login_path %>">  LOGGA IN </a> </li>
-          <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
+          <div class="col-md-3">
+            <ul class="nav navbar-nav navbar-centered">
+              <li><a href="<%=post_infos_search_path %>">SÖK</a> </li>
+              <li><a href="<%=post_infos_latest_path %>">SENASTE POSTER</a> </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <ul class="nav navbar-nav navbar-right">
+              <% if @current_user && @current_user.is_admin %>
+                <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
+              <% end %>
+              <li><a>INLOGGAD SOM: 
+                <b><%= @current_user.xname %> </b> </a> </li>        
+              <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
+          	</ul>
+          </div>
         <% end %>
-			</ul>
+        <!--div class="col-md-1"></div-->
+      </div>
 		</div>
 	</nav>
 

@@ -46,6 +46,7 @@
 				</div>
 			</div>
 			<div class="col-md-4">
+				<%= render 'helpinfo' %>
 				<!-- %= f.select :per_page, options_from_collection_for_select([25, 60], 'id', 'per_page') % -->
 			</div>
 		</div>
@@ -74,7 +75,7 @@ else -> add
 	    console.log('href --- '+ window.location.href);
 	    //this adds on &per_page or every load... ._. but does change
 	    window.location.href = window.location.href + '&per_page=' + this.options[this.options.selectedIndex].value;
-	    
+	    // test output
 	    console.log('href +++ '+ window.location.href);
 	    console.log(window.location);
 	    console.log('BOB'+this.baseURI +'&per_page='+this.options[this.options.selectedIndex].value);
@@ -83,11 +84,11 @@ else -> add
 	});
 </script>
 
-
+<!-- flytta denna if... till searchpretty. Kan göra bättre koll där. -->
 <% if params[:commit] != nil %>
 	<%= render 'searchpretty' %>
 <% elsif%>
 	<br><br>
-	<%= "Tom sökning" %>
+	<%= "Sökningen gav inga resultat" %>
 <% end %>
 
