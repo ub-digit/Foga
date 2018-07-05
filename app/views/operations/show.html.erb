@@ -1,9 +1,25 @@
 
-<div>
-   <h3> Ny åtgärd skapades. </h3>
-   <br><br>
-   <b> Åtgärd:       </b>  <%= @operation.operation_type %>  <br>
-   <b> Beskrivning:  </b>	<%= @operation.description %>     <br>
-</div>
+
+<html>
+
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-4">
+            <br>
+            <h3> Ny åtgärd skapades </h3>
+            <br><br>
+            <h4><b> Åtgärd:       </b></h4>  <%= @operation.operation_type %>  <br>
+            <h4><b> Beskrivning:  </b></h4>  <%= @operation.description %>     <br>            
+         </div>
+         <div class="col-md-4"></div>
+      </div>
+   </div>
+</body>
+</html>
+
+
+
 
 	

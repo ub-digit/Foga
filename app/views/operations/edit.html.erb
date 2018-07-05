@@ -1,9 +1,21 @@
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-3">
+            <br>
+            <h3>REDIGERA ÅTGÄRD</h3>
+            <%= render 'form' %>
+            <br><br><br>
+            <%= link_to "Radera", operation_path(@operation), 
+                method: :delete, data: { confirm: "Är du säker?"} %>
+         </div>
+         <div class="col-md-4"></div>
+      </div>
+   </div>
+</body>
 
 
-<h3>Redigera åtgärd</h3>
+
 <br><br>
-<%= render 'form' %>
-<br><br>
-<%= link_to "Radera åtgärd", operation_path(@operation), 
-    method: :delete, data: { confirm: "Är du säker?"} %>
 

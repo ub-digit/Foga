@@ -2,42 +2,46 @@
 <!--	For new and edit.
 	This is a rails partial file which helps to reduce code duplication.		-->
 
-<%= form_for @post_info do |f| %>
-
-	<% if @post_info.errors.any? %>
-	 	<ul>
-			<h4>ERROR(s)</h4>
-
-			<% @post_info.errors.full_messages.each  do |e_message| %>
-		<!-- .errors.full_messages.each do |e_message| %> 	-->
-				<li> <%= e_message %> </li>
-			<% end %>
-	 	</ul>
-	<% end %>
-	
-	<div >
-	<%= f.submit "Spara"%>
-	</div>
-	<br>
-	
-	<%= f.label :title, "Titel *" %>
-	<%= f.text_field :title %><br>
-	<br>
-	<%= f.label :publisher, "Utgivare *" %>
-	<%= f.text_field :publisher %><br>
-	<br>
-	<%= f.label :operation_id, "Åtgärd *" %> 
-	<%= collection_select(:post_info, :operation_id, 
-				Operation.all.order("operation_type"), 
-				:id, :operation_type, :prompt => "Välj") %>
-	<br><br>
-	<%= f.label :issn, "ISSN" %>
-	<%= f.text_field :issn %><br>
-	<br>
-	<%= f.label :comment, "Anmärkning" %>
-	<%= f.text_area :comment, size: "50x10" %><br>
-	<br>
-	<!-- < %= f.label "Person *" %><br>
-	< %= f.text_field :created_by %><br>
-	< %= f.text_field :updated_by %><br> -->
-<% end %>
+</head>
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-3">
+            <%= form_for @post_info do |f| %>
+            <h3>SKAPA NY POST</h3> 
+               <div align="right">
+                  <h4> <%= f.submit "Spara"%> </h4>
+               </div>
+               <% if @post_info.errors.any? %>
+                  <ul>
+                     <h4>ERROR(s)</h4>
+                     <% @post_info.errors.full_messages.each  do |e_message| %>
+                        <li> <%= e_message %> </li>
+                     <% end %>
+                  </ul>
+               <% end %>
+               
+               <%= f.label :title, "Titel *" %>
+               <%= f.text_field :title %><br>
+               <br>
+               <%= f.label :publisher, "Utgivare *" %>
+               <%= f.text_field :publisher %><br>
+               <br>
+               <%= f.label :operation_id, "Åtgärd *" %> 
+               <%= collection_select(:post_info, :operation_id, 
+                        Operation.all.order("operation_type"), 
+                        :id, :operation_type, :prompt => "Välj") %>
+               <br><br>
+               <%= f.label :issn, "ISSN" %>
+               <%= f.text_field :issn %><br>
+					<%= f.label :comment, "Anmärkning" %>
+					<%= f.text_area :comment, size: "50x10" %><br>
+					<br>
+         </div>
+         <div class="col-md-4"></div>
+				<% end %>
+      </div>
+   </div>
+</body>
+</html>
