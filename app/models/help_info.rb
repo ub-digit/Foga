@@ -1,0 +1,2 @@
+class HelpInfo < ApplicationRecord
+end

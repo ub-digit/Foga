@@ -1,6 +1,7 @@
 class OperationsController < ApplicationController
   before_action :find_operation, only:[:show, :edit, :update, :destroy]
   before_action :authenticate
+  before_action :an_admin, only:[:edit, :update, :destroy]
 
   def index
   	@operations = Operation.all.order("operation_type")
@@ -26,7 +27,9 @@ class OperationsController < ApplicationController
   end
 
   def edit
-  	
+    redirect_to operations_path unless an_admin
+      
+    pp "##### wanting to edit ##### "
   end
 
   def update
@@ -51,6 +54,13 @@ class OperationsController < ApplicationController
 
   def operation_params
   	params.require(:operation).permit(:operation_type, :description)
+  end
+
+  def an_admin
+    # printing this twice. why???
+    pp "### CHECKING IF ADMIN ##### "
+    pp @current_user.is_admin
+    @current_user.is_admin
   end
 
 end

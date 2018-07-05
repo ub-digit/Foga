@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
 
+  resources :help_infos
 #get 'operations/index'
 
 

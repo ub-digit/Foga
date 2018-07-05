@@ -1,6 +1,6 @@
 
 <body>
-
+<% unless @post_infos == nil %>
 	<br>
 	<h3> <%= @post_infos.count %> Träffar </h3>
 	
@@ -50,5 +50,5 @@
 	});
 	</script>
 
-
+<% end -%>
 </body>	
