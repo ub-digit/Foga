@@ -34,7 +34,7 @@
 					<%= f.label :operation_id_eq, "Åtgärd" %>
 					<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
 								'id', 'operation_type', @search.operation_id_eq),
-								include_blank: true, :prompt => "Välj"	%>
+								include_blank: false, :prompt => "Alla"	%>
 				</div>
 				<div class="field">
 					<%= f.label :created_at_gteq, "Från" %>
