@@ -1,14 +1,29 @@
-<p id="notice"><%= notice %></p>
+<!-- p id="notice">< % = notice % ></p -->
+
+
+<% @help_info = HelpInfo.first  %>
 
 <p>
-  <strong>Helptext:</strong>
-  <%= @help_info.helptext %>
+  <h3>Sökhjälp:</h3>
+<% if @help_info != nil %>
+   <%= @help_info.helptext %>
+   <p>
+   </p>
+   
+   <% if @current_user.is_admin %>
+      <br><br>
+      <%= link_to 'Redigera hjälpavsnitt', edit_help_info_path(@help_info) %>
+   <% end %>
+<% else %>
+   Ingen hjälp information finns.
+   
+   <% if @current_user.is_admin %>
+      <br><br>
+      <%= link_to 'Skapa hjälpavsnitt', new_help_info_path %>
+   <% end %>
+<% end -%>
+
 </p>
 
-<p>
-  <strong>Updated by:</strong>
-  <%= @help_info.updated_by %>
-</p>
 
-<%= link_to 'Edit', edit_help_info_path(@help_info) %> |
-<%= link_to 'Back', help_infos_path %>
+<!-- % = link_to 'Back', help_infos_path % -->
