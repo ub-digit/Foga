@@ -7,7 +7,7 @@ class PostInfosController < ApplicationController
   before_action :authenticate
 
   def index
-     
+     redirect_to post_infos_search_path
   end
 
   def new
@@ -71,8 +71,8 @@ class PostInfosController < ApplicationController
     end
     @search = PostInfo.search(params[:q])
     #pp "contr"
-    #pp params[:per_page]
     @post_infos = @search.result.paginate(page: params[:page], per_page: params[:per_page])
+    pp @search.to_s
     #(:page => params[:page])
   end 
 
