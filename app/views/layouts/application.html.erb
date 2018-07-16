@@ -17,26 +17,46 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-				<!-- when using <li> tab can have if then conditions. 
-          E.g. if logged in as admin show new/edit operations link. Look into that! -->
-    <!-- added these lines.-->
+<body>
 
   <nav class="navbar navbar-default "> 
     <div class="container-fluid"> 
-      <div class="row">
-          <% if @current_user %> 
+      <% if @current_user %> 
+
+        <!-- Admin functionality only. -->
+        <% if @current_user && @current_user.is_admin %>
+          <div class="row">
+            <div class="col-md-4">
+              <ul class="nav navbar-nav navbar-left">
+                  <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
+              </ul>
+            </div>
+
+            <div class="col-md-4">
+              <ul class="nav navbar-nav navbar-centered">         
+                  <li><a href="<%=help_infos_path %>">REDIGERA HJÄLP</a> </li>
+              </ul>
+            </div>
+
+            <div class="col-md-4">
+              <ul class="nav navbar-nav navbar-centered">
+                  <li><a href="<%=allusers_path %>">  ANVÄNDARE </a> </li>
+                  <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
+              </ul>
+            </div>  
+          </div>
+        <% end %>
+
+        <!-- All users. -->
+        <div class="row">
           <div class="col-md-4">
             <ul class="nav navbar-nav navbar-left">
               <li><a href="<%=new_post_info_path %>"> NY POST </a> </li>
               <li><a href="<%=operations_path %>"> ÅTGÄRDER </a> </li>
-              <% if @current_user && @current_user.is_admin %>
-                <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
-              <% end %>
             </ul>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-4">
             <ul class="nav navbar-nav navbar-centered">
               <li><a href="<%=post_infos_search_path %>">SÖK</a> </li>
               <li><a href="<%=post_infos_latest_path %>">SENASTE POSTER</a> </li>
@@ -44,18 +64,15 @@
           </div>
 
           <div class="col-md-4">
-            <ul class="nav navbar-nav navbar-right">
-              <% if @current_user && @current_user.is_admin %>
-                <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
-              <% end %>
+            <ul class="nav navbar-nav navbar-centered">
               <li><a>INLOGGAD SOM: 
                 <b><%= @current_user.xname %> </b> </a> </li>        
               <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
-          	</ul>
+            </ul>
           </div>
-        <% end %>
-        <!--div class="col-md-1"></div-->
-      </div>
+        </div>
+      <% end %>
+
 		</div>
 	</nav>
 
