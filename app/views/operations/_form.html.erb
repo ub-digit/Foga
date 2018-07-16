@@ -2,31 +2,27 @@
 <html>
 
 <body>
+   <%= form_for @operation do |f| %>
+      <div align="right">
+         <h4><%= f.submit "Spara", :disable_with => 'Submitting...' %></h4>
+      </div>
 
-            <%= form_for @operation do |f| %>
-            <div align="right">
-               <h4><%= f.submit "Spara", :disable_with => 'Submitting...' %></h4>
-            </div>
-               <% if @operation.errors.any? %>
-                  <ul>
-                     <h4>ERROR(s)</h4>
-                     <% @operation.errors.full_messages.each  do |e_message| %>
-                     <!-- .errors.full_messages.each do |e_message| %> -->
-                     <li> <%= e_message %> </li>
-                     <% end %>
-                  </ul>
-               <% end %>
-
-               <%= f.label :operation_type, "Åtgärd *" %>   <br>
-               <%= f.text_field :operation_type, :maxlength => 20%>
-               <br><br>
-               <%= f.label :description, "Kort beskrivning" %> <br>
-               <%= f.text_area :description, size: "40x4", :maxlength => 60 %>
-               <br><br>
+      <% if @operation.errors.any? %>
+         <ul>
+            <h4>ERROR(s)</h4>
+            <% @operation.errors.full_messages.each  do |e_message| %>
+            <li> <%= e_message %> </li>
             <% end %>
+         </ul>
+      <% end %>
+
+      <%= f.label :operation_type, "Åtgärd *" %>   <br>
+      <%= f.text_field :operation_type, :maxlength => 20%>
+      <br><br>
+      <%= f.label :description, "Kort beskrivning" %> <br>
+      <%= f.text_area :description, size: "40x4", :maxlength => 60 %>
+      <br><br>
+   <% end %>
 </body>
+
 </html>
-
-<div>
-
-</div>

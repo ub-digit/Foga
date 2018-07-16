@@ -1,0 +1,33 @@
+
+
+<br> <br>
+<html>
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-4">
+            <table>
+               <tr>
+                  <th><h4> ANVÄNDARE      </h4></th>
+                  <th><h4> RÄTTIGHETER </h4></th>
+               </tr>
+
+               <% @users.each do |u| %>
+                  <tr>
+                     <td><%= u.xname %> </td>
+                     <!-- td> < % = link_to u.xname, edit_user_path(u) % >   </td -->
+                     <td> 
+                        <% if u.is_admin %>   
+                           Administrativa
+                        <% end %>
+                     </td>
+                  </tr>
+               <% end %>
+            </table>
+         </div>
+         <div class="col-md-4"></div>
+      </div>
+   </div>
+</body>
+</html>

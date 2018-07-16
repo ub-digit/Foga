@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :user_params, only:[:create, :login]
-  before_action :authenticate, only:[:new]
+  before_action :authenticate, only:[:new, :show]
+  #before_action :find_user, only:[:show]
 
 
    def new
@@ -16,6 +17,10 @@ class UsersController < ApplicationController
       end
    end
 
+  def show
+    @users = User.all
+  end
+
    def login
      user = User.find(params[:xname])
      if user.password == params[:password]
@@ -30,5 +35,8 @@ private
      params.require(:user).permit(:xname, :password, :password_confirmation, :is_admin)
    end
 
+  # def find_user
+  #   @user = User.find(params[:id])
+  # end
 
 end

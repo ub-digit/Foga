@@ -46,8 +46,7 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<%= render 'helpinfo' %>
-				<!-- %= f.select :per_page, options_from_collection_for_select([25, 60], 'id', 'per_page') % -->
+				<%= render :template => "/help_infos/show" %>
 			</div>
 		</div>
 		
@@ -62,6 +61,7 @@
   <% end %>
   <!-- option value="">< %= :per_page % ></option -->
 </select>
+				<!-- %= f.select :per_page, options_from_collection_for_select([25, 60], 'id', 'per_page') % -->
 
 
 <script >
@@ -87,7 +87,7 @@ else -> add
 <!-- flytta denna if... till searchpretty. Kan göra bättre koll där. -->
 <% if params[:commit] != nil %>
 	<%= render 'searchpretty' %>
-<% elsif%>
+<% else%>
 	<br><br>
 	<%= "Sökningen gav inga resultat" %>
 <% end %>

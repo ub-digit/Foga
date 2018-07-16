@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   
 
-
-  resources :help_infos
 #get 'operations/index'
 
 
@@ -16,23 +14,21 @@ resources :operations
  # receive the form and create a user in our database using the data given to us by the user.
  get '/signup' => 'users#new'
  post '/users' => 'users#create'
+ get '/allusers' => 'users#show'
+ 
 
  # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  #get '/help' => 'help#new'
+  #get '/show_help' => 'help#show'
+  resources :help_infos
 
 
 root 'post_infos#search'
 #'post_infos#index'
 
-#match ':controller(/:action(/:id))', :via => :get
 
-
-
-  #get 'post_infos/index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  # deprecated in v5.2
 end
