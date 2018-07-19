@@ -26,9 +26,6 @@ class OperationsController < ApplicationController
   end
 
   def edit
-    redirect_to operations_path unless an_admin
-      
-    pp "##### wanting to edit ##### "
   end
 
   def update

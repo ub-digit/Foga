@@ -1,6 +1,5 @@
 
-<!--	For new and edit.
-	This is a rails partial file which helps to reduce code duplication.		-->
+<!--	For new and edit.  -->
 
 </head>
 <body>
@@ -9,7 +8,9 @@
          <div class="col-md-4"></div>
          <div class="col-md-3">
             <%= form_for @post_info do |f| %>
-            <h3>SKAPA NY POST</h3> 
+
+               <h3><%= @form_action_title %></h3> 
+            
                <div align="right">
                   <h4> <%= f.submit "Spara"%> </h4>
                </div>
@@ -35,12 +36,13 @@
                <br><br>
                <%= f.label :issn, "ISSN" %>
                <%= f.text_field :issn %><br>
+               <br>
 					<%= f.label :comment, "Anmärkning" %>
 					<%= f.text_area :comment, size: "50x10" %><br>
 					<br>
+				<% end %>
          </div>
          <div class="col-md-4"></div>
-				<% end %>
       </div>
    </div>
 </body>

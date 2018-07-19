@@ -2,25 +2,24 @@
 
 
 <% @help_info = HelpInfo.first  %>
-
-<p>
-  <h3>Sökhjälp:</h3>
-<% if @help_info != nil %>
-   <%= @help_info.helptext %>
-   <p>
-   </p>
+   <h3>SÖKHJÄLP:</h3>
+   <% if @help_info != nil %>
+      <%= @help_info.helptext %>
+      <div align="right">
+         <% if @current_user.is_admin %>
+            <br><br>
+            <%= link_to 'Redigera hjälpavsnitt', edit_help_info_path(@help_info) %>
+         <% end %>
+      </div>
+   <% else %>
+      Ingen hjälp information finns.
    
-   <% if @current_user.is_admin %>
-      <br><br>
-      <%= link_to 'Redigera hjälpavsnitt', edit_help_info_path(@help_info) %>
-   <% end %>
-<% else %>
-   Ingen hjälp information finns.
-   
-   <% if @current_user.is_admin %>
-      <br><br>
-      <%= link_to 'Skapa hjälpavsnitt', new_help_info_path %>
-   <% end %>
+      <% if @current_user.is_admin %>
+         <div align="right">
+            <br><br>
+            <%= link_to 'Skapa hjälpavsnitt', new_help_info_path %>
+         </div>
+      <% end %>
 <% end -%>
 
 </p>

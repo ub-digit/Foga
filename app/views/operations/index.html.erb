@@ -15,7 +15,11 @@
 
 					<% @operations.each do |o| %>
 						<tr>
-							<td> <%= link_to o.operation_type, edit_operation_path(o) %>	</td>
+                     <% if @current_user.is_admin %>
+							  <td> <%= link_to o.operation_type, edit_operation_path(o) %>	</td>
+                     <% else %>
+                       <td> <%= o.operation_type %> </td>
+                     <% end %>
 							<td> <%= o.description %>	 </td>
 						</tr>
 					<% end %>

@@ -37,7 +37,7 @@ class HelpInfosController < ApplicationController
     @help_info.updated_by = @current_user.xname
     respond_to do |format|
       if @help_info.save
-        format.html { redirect_to @help_info, notice: 'Help info was successfully created.' }
+        format.html { redirect_to post_infos_search_path, notice: 'Help info was successfully created.' }
         format.json { render :show, status: :created, location: @help_info }
       else
         format.html { render :new }
@@ -49,16 +49,17 @@ class HelpInfosController < ApplicationController
   # PATCH/PUT /help_infos/1
   # PATCH/PUT /help_infos/1.json
   def update
-    respond_to do |format|
+    #respond_to do |format|
       @help_info.updated_by = @current_user.xname
       if @help_info.update(help_info_params)
-        format.html { redirect_to @help_info, notice: 'Help info was successfully updated.' }
-        format.json { render :show, status: :ok, location: @help_info }
-      else
-        format.html { render :edit }
-        format.json { render json: @help_info.errors, status: :unprocessable_entity }
+      #   format.html { redirect_to @help_info, notice: 'Help info was successfully updated.' }
+      #   format.json { render :show, status: :ok, location: @help_info }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @help_info.errors, status: :unprocessable_entity }
+      redirect_to post_infos_search_path
       end
-    end
+    #end
   end
 
   # DELETE /help_infos/1
@@ -66,7 +67,7 @@ class HelpInfosController < ApplicationController
   def destroy
     @help_info.destroy
     respond_to do |format|
-      format.html { redirect_to help_infos_url, notice: 'Help info was successfully destroyed.' }
+      format.html { redirect_to post_infos_search_path, notice: 'Help info was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
