@@ -10,13 +10,15 @@
             <table>
                <tr>
                   <th><h4> ANVÄNDARE      </h4></th>
+                  <th><h4> NAMN </h4></th>
                   <th><h4> RÄTTIGHETER </h4></th>
                </tr>
 
                <% @users.each do |u| %>
                   <tr>
-                     <td><%= u.xname %> </td>
-                     <!-- td> < % = link_to u.xname, edit_user_path(u) % >   </td -->
+                     <!-- td>< %= u.xname %> </td -->
+                     <td> <%= link_to u.xname, edit_user_path(u) %>  </td>
+                     <td> <%= u.name %>  </td>
                      <td> 
                         <% if u.is_admin %>   
                            Administrativa

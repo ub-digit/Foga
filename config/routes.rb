@@ -15,6 +15,7 @@ resources :operations
  get '/signup' => 'users#new'
  post '/users' => 'users#create'
  get '/allusers' => 'users#show'
+ resources :users, only:[:edit, :update, :destroy]
  
 
  # these routes are for showing users a login form, logging them in, and logging them out.
@@ -22,8 +23,7 @@ resources :operations
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  #get '/help' => 'help#new'
-  #get '/show_help' => 'help#show'
+
   resources :help_infos
 
 

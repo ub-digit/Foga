@@ -1,0 +1,34 @@
+edit?
+
+
+<br>
+<div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-2">
+            <h3> ANVÄNDARE</h3> <br><br>
+            <%= form_for @user do |f| %>
+               <%= f.label :xname, "x-konto: " %>
+               <%= f.text_field :xname %><br>
+               <br>
+               <%= f.label :name, "Namn: " %>
+               <%= f.text_field :name %><br>
+               <br>
+               <%= f.label :password, "Lösenord: " %>
+               <%= f.password_field :password %><br>
+               <br>
+               <%= f.label :password_confirmation, "Bekräfta lösenord: " %>
+               <%= f.password_field :password_confirmation %><br>
+               <br>
+               <%= f.label :is_admin, "Administratör:  " %>
+               <%= f.check_box :is_admin %>
+               
+               <div class="actions" align="right"><br>
+                  <h4><%= f.submit "Spara" %> </h4>
+               </div>
+            <% end %>
+         <div class="col-md-4"></div>
+      </div>
+   </div>
+
+<br>

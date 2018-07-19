@@ -6,7 +6,7 @@
          <div class="col-md-4"></div>
          <div class="col-md-2">
             <h3>NY ANVÄNDARE</h3> <br><br>
-            <%= form_for :user, url: '/users' do |f| %>
+            <%= form_for @user do |f| %>
                <%= f.label :xname, "x-konto: " %>
                <%= f.text_field :xname %><br>
                <br>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate
   before_action :user_params, only:[:create, :login]
   before_action :an_admin
-  #before_action :find_user, only:[:show]
+  before_action :find_user, only: [:edit, :update, :destroy]
 
 
   def new
@@ -22,6 +22,20 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def edit
+  end
+
+  def update   
+  if @user.update(user_params) 
+      redirect_to allusers_path
+    else
+      render 'edit'
+    end 
+  end
+
+  def destroy
+  end
+
   def login
    user = User.find(params[:xname])
    if user.password == params[:password]
@@ -36,8 +50,8 @@ private
     params.require(:user).permit(:xname, :password, :password_confirmation, :is_admin)
   end
 
-  # def find_user
-  #   @user = User.find(params[:id])
-  # end
+  def find_user
+    @user = User.find(params[:id])
+  end
 
 end
