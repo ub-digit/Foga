@@ -6,15 +6,17 @@ class UsersController < ApplicationController
 
 
   def new
+    @user = User.new
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-       session[:user_id] = user.id
-       redirect_to post_infos_latest_path
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to allusers_path
     else
-       redirect_to '/'
+      pp "---ERROR creating NEW user account---"
+      render 'new'
+      #redirect_to signup_path
     end
   end
 
@@ -23,9 +25,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    pp "---- USER EDIT"
   end
 
   def update   
+    pp "----- UPDATE USER"  
   if @user.update(user_params) 
       redirect_to allusers_path
     else
@@ -41,13 +45,15 @@ class UsersController < ApplicationController
    if user.password == params[:password]
      give_token
    else
+    pp "---User login failed---"
     redirect_to '/'
    end
   end
 
 private
   def user_params
-    params.require(:user).permit(:xname, :password, :password_confirmation, :is_admin)
+    params.require(:user).permit(:xname, :name, :password, 
+      :password_confirmation, :is_admin, :is_active)
   end
 
   def find_user
