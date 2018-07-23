@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180705123225) do
+ActiveRecord::Schema.define(version: 20180723080116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180705123225) do
     t.datetime "updated_at", null: false
     t.boolean "is_admin", default: false
     t.string "name"
+    t.boolean "is_active", default: true
   end
 
 end
