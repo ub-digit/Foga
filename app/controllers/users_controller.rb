@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.all
+    @users = User.all.order("xname")
   end
 
   def edit

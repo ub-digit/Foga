@@ -5,13 +5,14 @@
 <body>
     <div class="container-fluid"> 
       <div class="row">         
-         <div class="col-md-4"></div>
-         <div class="col-md-4">
+         <div class="col-md-3"></div>
+         <div class="col-md-5">
             <table>
                <tr>
                   <th><h4> ANVÄNDARE      </h4></th>
                   <th><h4> NAMN </h4></th>
                   <th><h4> RÄTTIGHETER </h4></th>
+                  <th><h4> AKTIVT KONTO </h4></th>
                </tr>
 
                <% @users.each do |u| %>
@@ -22,6 +23,13 @@
                      <td> 
                         <% if u.is_admin %>   
                            Administrativa
+                        <% end %>
+                     </td>
+                     <td> 
+                        <% if u.is_active %>   
+                           JA
+                        <% else %>
+                           NEJ
                         <% end %>
                      </td>
                   </tr>

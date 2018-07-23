@@ -3,19 +3,15 @@
 <br>
 <div class="container-fluid"> 
       <div class="row">         
+         <%= form_for @user do |f| %>
          <div class="col-md-4">
-            <% if @user.errors.any? %>
-               <ul>
-               <h4>ERROR(s)</h4>
-               <% @user.errors.full_messages.each  do |e_message| %>
-                  <li> <%= e_message %> </li>
-               <% end %>
-               </ul>
-            <% end %>
+            <br><br><br><br><br><br>
+            <br><br><br><br><br>
+            INFO: <br>
+            Lösenordsfältet måste fyllas i bara om du vill byta lösenord. 
          </div>
-         <div class="col-md-2">
+         <div class="col-md-3">
             <h3>ÄNDRA ANVÄNDAREUPPGIFTER </h3> <br><br>
-            <%= form_for @user do |f| %>
                <%= f.label :xname, "x-konto: " %>
                <%= f.text_field :xname %><br>
                <br>
@@ -34,9 +30,23 @@
                <div class="actions" align="right"><br>
                   <h4><%= f.submit "Spara" %> </h4>
                </div>
+         </div>
+         <div class="col-md-2">
+            <br><br><br><br><br>
+            <div align="left">
+               <%= f.label :is_active, "Aktivt konto:  " %>
+               <%= f.check_box :is_active %>
+            </div>
+            <% if @user.errors.any? %>
+               <ul>
+               <h4>ERROR(s)</h4>
+               <% @user.errors.full_messages.each  do |e_message| %>
+                  <li> <%= e_message %> </li>
+               <% end %>
+               </ul>
             <% end %>
-         <div class="col-md-4"></div>
-      </div>
+         </div>
+         <% end %>
    </div>
 
 <br>

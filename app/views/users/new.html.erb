@@ -4,14 +4,6 @@
 <div class="container-fluid"> 
       <div class="row">         
          <div class="col-md-4">
-            <% if @user.errors.any? %>
-               <ul>
-               <h4>ERROR(s)</h4>
-               <% @user.errors.full_messages.each  do |e_message| %>
-                  <li> <%= e_message %> </li>
-               <% end %>
-               </ul>
-            <% end %>
          </div>
          <div class="col-md-2">
             <h3>NY ANVÄNDARE</h3> <br><br>
@@ -35,7 +27,17 @@
                   <h4><%= f.submit "Spara" %> </h4>
                </div>
             <% end %>
-         <div class="col-md-4"></div>
+         </div>
+         <div class="col-md-4">
+            <% if @user.errors.any? %>
+               <ul>
+               <h4>ERROR(s)</h4>
+               <% @user.errors.full_messages.each  do |e_message| %>
+                  <li> <%= e_message %> </li>
+               <% end %>
+               </ul>
+            <% end %>
+         </div>   
       </div>
    </div>
 
