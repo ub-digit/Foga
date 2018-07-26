@@ -14,13 +14,14 @@ def create
       redirect_to post_infos_latest_path
    else
     # If user's login doesn't work, send them back to the login form.
-      pp "ERROR"
-      redirect_to '/login'
+      pp "---Session login ERROR---"
+      redirect_to '/login' #, notice: "SESH FAIL"
    end
 end
 
 def destroy
-   session.delete(:user_id)
+   reset_session
+   
    redirect_to '/login'
 end
 

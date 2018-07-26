@@ -17,7 +17,6 @@
 
                <% @users.each do |u| %>
                   <tr>
-                     <!-- td>< %= u.xname %> </td -->
                      <td> <%= link_to u.xname, edit_user_path(u) %>  </td>
                      <td> <%= u.name %>  </td>
                      <td> 

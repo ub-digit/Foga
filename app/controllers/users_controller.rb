@@ -45,8 +45,9 @@ class UsersController < ApplicationController
    if user.password == params[:password]
      give_token
    else
+    #flash.now[:danger] = 'Invalid email/password combination'
     pp "---User login failed---"
-    redirect_to '/'
+    redirect_to '/'#, notice: "FAIL"
    end
   end
 
