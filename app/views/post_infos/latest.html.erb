@@ -1,32 +1,52 @@
-
-
-
-<!--  Make it prettier. not in this table format. 
-      Toggle text saying how many days we are showing now 
+<!--  Toggle text saying how many days we are showing now 
       and link to the other option for days.
       I.e. only one link. Text with info should NOT be hardcoded. 
       If entering no. of days via url...
  -->
-<br>
-<table class="table table-bordered">
 
-   <tr>
-      <th><h4> VISAR <%= @days %> DAGAR BAKÅT </h4></th>
-   
-      <th><h4>
-         <% if @days > 7 %>
-            <%= link_to("SENASTE 7 DAGARNA", {:action => 'latest', :days => 7}) %>
-         <% else %>
-            <h4> <%= link_to("SENASTE 30 DAGARNA", {:action => 'latest', :days => 30}) %> </h4>
-         <% end %>
-      </h4></th>
-   </tr>
-   
-</table>
+</head>
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-3"></div>
+         <div class="col-md-5">
+            <br>
+            <table class="table table-bordered">
+               <tr>
+                  <th>
+                  <div align="center">
+                     <h4> VISAR <%= @days %> DAGAR BAKÅT </h4>
+                  </div>
+                  </th>
+                  
+                  <th>
+                  <div align="center">
+                     <h4>
+                     <% if @days > 7 %>
+                        <%= link_to("SENASTE 7 DAGARNA", 
+                        {:action => 'latest', :days => 7}) %>
+                     <% else %>
+                         <%= link_to("SENASTE 30 DAGARNA", 
+                        {:action => 'latest', :days => 30}) %> 
+                     <% end %>
+                     </h4>
+                  </div>
+                  </th>
+               </tr>
+            </table>
 
-<center> <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %> </center>
-<h3> <%= @post_infos.count %> Träffar </h3>
+         </div>
+         <div class="col-md-2"></div>
+      </div>
+   </div>
 
+   <center> 
+      <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %>
+   </center>
+   <h3> <%= @post_infos.count %> Träffar </h3>
+
+</body>
+</html>
 
 
 <%= render 'pretty' %>
