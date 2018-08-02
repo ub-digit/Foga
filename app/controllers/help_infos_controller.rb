@@ -5,9 +5,9 @@ class HelpInfosController < ApplicationController
 
   # GET /help_infos
   # GET /help_infos.json
-  def index
-    @help_infos = HelpInfo.all
-  end
+  # def index
+  #   @help_infos = HelpInfo.all
+  # end
   
   # GET /help_infos/new
   def new

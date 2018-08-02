@@ -37,10 +37,10 @@ class OperationsController < ApplicationController
   	end
   end
 
-  def destroy
-    @operation.destroy
-    redirect_to operations_path
-  end
+  # def destroy
+  #   @operation.destroy
+  #   redirect_to operations_path
+  # end
 
 
   private
