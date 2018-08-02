@@ -11,9 +11,6 @@ class PostInfosController < ApplicationController
   end
 
   def new
-    # When creating a new post, should assign that automatically to the currently logged in user.
-    #@post_info = current_user.post_info.build
-
   	@post_info = PostInfo.new
   end
 
@@ -41,8 +38,6 @@ class PostInfosController < ApplicationController
   end
 
   def update
-    # When updating a post, should set updated_by automatically to the currently logged in user.
-
     @post_info.updated_by = @current_user.xname
     if @post_info.update(post_params) 
   		redirect_to @post_info
@@ -52,7 +47,8 @@ class PostInfosController < ApplicationController
   end
 
   def destroy
-    @post_info.destroy
+    @post_info.show = false;
+    @post_info.save
     redirect_to post_infos_path
   end
 
@@ -61,20 +57,30 @@ class PostInfosController < ApplicationController
     if @days == 0
       @days = 7
     end
-    @post_infos = PostInfo.all.where("DATE(created_at) > (NOW() - INTERVAL '? DAY')", 
+    @post_infos = PostInfo.all.where("DATE(updated_at) > (NOW() - INTERVAL '? DAY') AND show = true", 
                       @days).order("updated_at DESC").paginate(:page => params[:page])
   end
 
   def search  
     if params[:q] != nil
       params[:q].permit!
+      params[:q][:show_true] = "1"
     end
     @search = PostInfo.search(params[:q])
-    #pp "contr"
+    
     @post_infos = @search.result.paginate(page: params[:page], per_page: params[:per_page])
     pp @search.to_s
     #(:page => params[:page])
   end 
+
+  def op_exists(this_post_info = @post_info)
+    if Operation.find_by(id: this_post_info.operation_id)  
+      Operation.find_by(id: this_post_info.operation_id).operation_type 
+    else 
+      "Okänd åtgärd" 
+    end 
+  end
+  helper_method :op_exists
 
 end
 

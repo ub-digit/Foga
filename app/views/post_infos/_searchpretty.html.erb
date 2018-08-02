@@ -3,7 +3,6 @@
 <% unless @post_infos == nil %>
 	<br>
 	<h3> <%= @post_infos.count %> Träffar </h3>
-	
 	<br><br>
 	<center> <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %> </center>
 
@@ -26,9 +25,7 @@
 			<tr>
 				<td>	<%= link_to p.title, post_info_path(p) %>		</td>
 				<td>	<%= p.publisher %>	</td>
-				<td>	<%  if Operation.find_by(id: p.operation_id) %>
-						<%=	Operation.find_by(id: p.operation_id).operation_type %> 
-						<%  else %>		<%= "Okänd" %>		<% end %> 	</td>
+				<td>	<%=  op_exists(p) %>	</td>
 
 				<td>	<%	if p.comment and p.comment != "" %>	
 					<button type="button"  class="btn btn-secondary" 

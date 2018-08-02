@@ -7,6 +7,7 @@
 			< %= f.check_box :title_start %>
 			< %= f.text_field :title_start %>			
 		</div> -->
+
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-3">
@@ -26,6 +27,7 @@
 				<br>
 				<div class="actions" align="right">
 					<h4> <%= f.submit "Sök" %></h4>
+					<% f.check_box :show_true  %>
 				</div>
 			</div>
 
@@ -64,6 +66,16 @@
 				<!-- %= f.select :per_page, options_from_collection_for_select([25, 60], 'id', 'per_page') % -->
 
 
+<!-- flytta denna if... till searchpretty. Kan göra bättre koll där. -->
+<% if params[:commit] != nil %>
+	<%= render 'searchpretty' %>
+<% else%>
+	<br><br>
+	<%= "Sökningen gav inga resultat" %>
+<% end %>
+
+
+
 <script >
 	$(document).on('change', '#per_page_select', function () {
 /* win.loc.href is the current url
@@ -84,11 +96,4 @@ else -> add
 	});
 </script>
 
-<!-- flytta denna if... till searchpretty. Kan göra bättre koll där. -->
-<% if params[:commit] != nil %>
-	<%= render 'searchpretty' %>
-<% else%>
-	<br><br>
-	<%= "Sökningen gav inga resultat" %>
-<% end %>
 

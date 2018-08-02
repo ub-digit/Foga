@@ -1,7 +1,5 @@
 
-
 <br>
-
 
 <div class="container-fluid">
 	<div class="row">
@@ -9,14 +7,10 @@
 			
 		<div class="col-md-3">
 			<h4>
-				<b> Titel:  </b> <%= @post_info.title %> 	<br><br>
-				<b> Åtgärd: 			</b><%  if Operation.find_by(id: @post_info.operation_id)   %>
-								<%=	Operation.find_by(id: @post_info.operation_id).operation_type %> 
-								<%  else %>
-								<%=	"Okänd" %>
-								<% end %> <br>
+				<b>  Titel:  </b> <%= @post_info.title %>	<br><br>
+				<b>  Åtgärd: </b> <%= op_exists %> <br>
 				<b>	Utgivare:  		</b><%= @post_info.publisher %> <br>
-				<b>	ISSN:  				</b><%= @post_info.issn %> <br><br>
+				<b>	ISSN:  			</b><%= @post_info.issn %> <br><br>
 				<b>	Skapad av: 		</b><%= @post_info.created_by %> <br>
 				<b>	Skapad:   		</b><%= @post_info.created_at.to_date %>  
 			</h4>
@@ -24,9 +18,9 @@
 
 		<div class="col-md-3">
 			<h4>
-				<b>	Kommentar:  	</b><br><%= @post_info.comment %><br><br>
-				<b>	Updaterad av: </b><%= @post_info.updated_by %> <br>
-				<b>	Updaterad: 		</b><%= @post_info.updated_at.to_date %> <br>
+				<b>	Kommentar:		</b><br> <%= @post_info.comment %> <br><br>
+				<b>	Updaterad av:	</b> <%= @post_info.updated_by %> <br>
+				<b>	Updaterad: 		</b> <%= @post_info.updated_at.to_date %> <br>
 			</h4>
 		</div>
 		
