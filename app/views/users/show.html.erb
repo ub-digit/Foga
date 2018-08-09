@@ -24,13 +24,11 @@
                            Administrativa
                         <% end %>
                      </td>
-                     <td> 
-                        <% if u.is_active %>   
-                           JA
-                        <% else %>
-                           NEJ
-                        <% end %>
-                     </td>
+                     <% if u.is_active %>   
+                        <td align="center"> JA </td>
+                     <% else %>
+                        <td align="left"> NEJ </td>
+                     <% end %>
                   </tr>
                <% end %>
             </table>

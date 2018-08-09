@@ -13,3 +13,13 @@ class User < ApplicationRecord
 
 
 end
+
+
+
+#    validates :password,
+#       #presence: {on: :create, message: 'Lösenord krävs.'},
+#       confirmation: true,
+#       #length: {is: 6, message: 'Lösenord måste vara 6 tecken långt.'}
+   
+#    validates :password_confirmation, 
+#       presence: {on: :create, message: 'Lösenord matchar ej.'}

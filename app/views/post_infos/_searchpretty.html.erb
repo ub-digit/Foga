@@ -1,12 +1,14 @@
 
+
 <body>
 <% unless @post_infos == nil %>
 	<br>
-	<h3> <%= @post_infos.count %> Träffar </h3>
-	<br><br>
+	
 	<center> <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %> </center>
+	
+	<h4><%= page_entries_info @post_infos %></h4>	 
 
-	<br><br>     
+	<br>     
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 		<tr>

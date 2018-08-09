@@ -2,18 +2,12 @@
 <!-- Searchy searchy -->
 <div class="container-fluid">
 	<%= search_form_for @search, url: post_infos_search_path do |f| %>
-		<!-- <div class="field">
-			< %= f.label  "Titel börjar med" %>
-			< %= f.check_box :title_start %>
-			< %= f.text_field :title_start %>			
-		</div> -->
 
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-3">
 				<div class="field">
-					<%=  # to search for any of the terms existing in my_field
-						 f.label :title_has_every_term, "Titel innehåller" %>
+					<%= f.label :title_has_every_term, "Titel innehåller" %>
 			  		<%= f.text_field  :title_has_every_term %>
 				</div>
 				<div class="field">
@@ -24,9 +18,13 @@
 					<%= f.label :issn_eq, "ISSN" %>
 					<%= f.text_field :issn_eq %>
 				</div>
+				
 				<br>
+				<b>Antal träffar per sida: </b> 
+				<%= select_tag "aper_page", options_for_select([50, 100, 200], params[:aper_page]) %>
+				
 				<div class="actions" align="right">
-					<h4> <%= f.submit "Sök" %></h4>
+					<h4> <%= f.submit "SÖK" %></h4>
 					<% f.check_box :show_true  %>
 				</div>
 			</div>
@@ -36,7 +34,7 @@
 					<%= f.label :operation_id_eq, "Åtgärd" %>
 					<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
 								'id', 'operation_type', @search.operation_id_eq),
-								include_blank: false, :prompt => "Alla"	%>
+								include_blank: "Alla"	%>
 				</div>
 				<div class="field">
 					<%= f.label :created_at_gteq, "Från" %>
@@ -51,19 +49,9 @@
 				<%= render :template => "/help_infos/show" %>
 			</div>
 		</div>
-		
 
 	<% end %>
 </div>
-
-<!-- Need to do some sort of save or submit action when this is set. -->
-<select id="per_page_select">
-  <% [10, 20, 50, 100].each do |per_pages| %>
-    <option data-url="<%= post_infos_search_path per_page: per_pages %>"><%= per_pages %></option>
-  <% end %>
-  <!-- option value="">< %= :per_page % ></option -->
-</select>
-				<!-- %= f.select :per_page, options_from_collection_for_select([25, 60], 'id', 'per_page') % -->
 
 
 <!-- flytta denna if... till searchpretty. Kan göra bättre koll där. -->
@@ -73,27 +61,5 @@
 	<br><br>
 	<%= "Sökningen gav inga resultat" %>
 <% end %>
-
-
-
-<script >
-	$(document).on('change', '#per_page_select', function () {
-/* win.loc.href is the current url
-if per_page already exists in url
-	set it to "new" value
-else -> add
-*/
-
-	    console.log('href --- '+ window.location.href);
-	    //this adds on &per_page or every load... ._. but does change
-	    window.location.href = window.location.href + '&per_page=' + this.options[this.options.selectedIndex].value;
-	    // test output
-	    console.log('href +++ '+ window.location.href);
-	    console.log(window.location);
-	    console.log('BOB'+this.baseURI +'&per_page='+this.options[this.options.selectedIndex].value);
-	    console.log('BOB'+this.baseURI);
-	    	    
-	});
-</script>
 
 

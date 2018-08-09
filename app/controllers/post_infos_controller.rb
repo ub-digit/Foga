@@ -64,13 +64,13 @@ class PostInfosController < ApplicationController
   def search  
     if params[:q] != nil
       params[:q].permit!
-      params[:q][:show_true] = "1"
+      params[:q][:show_true] = "1"  #Only show posts that aren't "deleted"
     end
     @search = PostInfo.search(params[:q])
-    
-    @post_infos = @search.result.paginate(page: params[:page], per_page: params[:per_page])
-    pp @search.to_s
-    #(:page => params[:page])
+     
+    # Default value is chosen if none is selected (in case params[:aper_page]=nil).
+    show_per_page = params[:aper_page] || 50
+    @post_infos = @search.result.paginate(per_page: show_per_page, page: params[:page])
   end 
 
   def op_exists(this_post_info = @post_info)
@@ -84,7 +84,6 @@ class PostInfosController < ApplicationController
 
 end
 
-
 private
 
 def find_postinfo
@@ -92,7 +91,5 @@ def find_postinfo
 end
 
 def post_params
-	params.require(:post_info).permit(:title, :publisher, :issn, :comment, #:created_by,
-                                     #:updated_by, 
-                                     :operation_id, :per_page)
+	params.require(:post_info).permit(:title, :publisher, :issn, :comment, :operation_id)
 end
