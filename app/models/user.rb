@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_secure_password
+   include ActiveModel::SecurePassword
+   has_secure_password
+   attr_accessor :password_digest
 
    validates :xname, 
       :presence => {message: ' | Du måste fylla in kontonamn. (t.ex. xsvesv)'},
@@ -14,12 +16,3 @@ class User < ApplicationRecord
 
 end
 
-
-
-#    validates :password,
-#       #presence: {on: :create, message: 'Lösenord krävs.'},
-#       confirmation: true,
-#       #length: {is: 6, message: 'Lösenord måste vara 6 tecken långt.'}
-   
-#    validates :password_confirmation, 
-#       presence: {on: :create, message: 'Lösenord matchar ej.'}
