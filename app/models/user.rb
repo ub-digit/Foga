@@ -1,7 +1,6 @@
 class User < ApplicationRecord
    include ActiveModel::SecurePassword
    has_secure_password
-   attr_accessor :password_digest
 
    validates :xname, 
       :presence => {message: ' | Du måste fylla in kontonamn. (t.ex. xsvesv)'},
