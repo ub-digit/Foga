@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #include Error::ErrorHandler
 
+  # Checks that user is logged in and set as an active user.
   def current_user
     a_session = session[:user_id]
     an_user ||= User.find(a_session) if a_session 
@@ -11,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  # Authenticates that user is in fact already logged in before performing action.
   def authenticate
     redirect_to '/login' unless current_user
   end
