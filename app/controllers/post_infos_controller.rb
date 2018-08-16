@@ -15,9 +15,6 @@ class PostInfosController < ApplicationController
   end
 
   def create
-    # When creating a new post, should assign that automatically to the currently logged in user.
-    #@post_info = current_user.post_info.build(post_params)
-
   	@post_info = PostInfo.new(post_params)
     @post_info.created_by = @current_user.xname
     @post_info.updated_by = @post_info.created_by
@@ -66,12 +63,16 @@ class PostInfosController < ApplicationController
       params[:q].permit!
       params[:q][:show_true] = "1"  #Only show posts that aren't "deleted"
     end
+
+    #look at @search for åäö problem. SQL done when???
     @search = PostInfo.search(params[:q])
-     
+    @search.sorts = 'title asc' if @search.sorts.empty?
     # Default value is chosen if none is selected (in case params[:aper_page]=nil).
     show_per_page = params[:aper_page] || 50
     @post_infos = @search.result.paginate(per_page: show_per_page, page: params[:page])
   end 
+
+
 
   def op_exists(this_post_info = @post_info)
     if Operation.find_by(id: this_post_info.operation_id)  
