@@ -1,6 +1,5 @@
 
 
-
 <% @help_info = HelpInfo.first  %>
 
 <h3>SÖKHJÄLP:</h3>
@@ -8,21 +7,20 @@
    <% if @help_info.blank? || @help_info.helptext.blank? %>
       Ingen hjälp information finns.
    <% else %>
-      <%= @help_info.helptext %>
+      <%= simple_format @help_info.helptext %>
    <% end %>
 
       
    <% if @current_user.is_admin %>
       <div align="right">
       <br><br>   
+      <div class="btn btn-default">
       <% if @help_info.blank? %>
-         <%= link_to 'Skapa hjälpavsnitt', new_help_info_path %>
+         <%= link_to 'Skapa hjälpavsnitt', new_help_info_path, :class => "btn"  %>
       <% else %>
-         <%= link_to 'Redigera hjälpavsnitt', edit_help_info_path(@help_info) %>
+         <%= link_to 'Redigera hjälpavsnitt', edit_help_info_path(@help_info), :class => "btn"  %>
       <% end %>
+         </div>
       </div>
    <% end %>
 
-
-
-<!-- % = link_to 'Back', help_infos_path % -->

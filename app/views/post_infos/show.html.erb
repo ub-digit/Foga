@@ -16,9 +16,9 @@
 			</h4>
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<h4>
-				<b>	Kommentar:		</b><br> <%= @post_info.comment %> <br><br>
+				<b>	Kommentar: </b><br> <%= simple_format @post_info.comment %> <br><br>
 				<b>	Updaterad av:	</b> <%= @post_info.updated_by %> <br>
 				<b>	Updaterad: 		</b> <%= @post_info.updated_at.to_date %> <br>
 			</h4>
@@ -27,13 +27,23 @@
 		<div class="col-md-2"></div>
 	</div>
 	
-	<br>
-	<div class="btn btn-default"> 
-		<%= link_to "Redigera", edit_post_info_path, :class=>"btn"%> 
+	<div class="row">
+		<div class="col-md-2">
+			<div class="btn btn-default">
+				<%= link_to "Till SÖK", post_infos_search_path, :class => "btn" %>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-3"></div>		
+		<div class="col-md-4">
+			<br>
+			<div class="btn btn-default"> 
+				<%= link_to "Redigera", edit_post_info_path, :class=>"btn"%> 
+			</div>
+			<div class="btn btn-default"> 
+				<%= link_to "Radera", post_info_path(@post_info), 
+					method: :delete, data: { confirm: "Är du säker?"}, :class=>"btn" %>
+	 		</div>
+		</div>
 	</div>
-	<div class="btn btn-default"> 
-		<%= link_to "Radera", post_info_path(@post_info), 
-			method: :delete, data: { confirm: "Är du säker?"}, :class=>"btn" %>
-	 </div>
-	<br>
 </div>
