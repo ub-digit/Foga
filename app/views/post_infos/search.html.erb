@@ -1,4 +1,4 @@
-<br>
+ <br>
 <!-- Searchy searchy -->
 <div class="container-fluid">
 	<%= search_form_for @search, url: post_infos_search_path do |f| %>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<div class="field">
 					<%= f.label :operation_id_eq, "Åtgärd" %>
 					<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
@@ -45,7 +45,7 @@
 					<%= f.date_field :created_at_lteq %>
 				</div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<%= render :template => "/help_infos/show" %>
 			</div>
 		</div>

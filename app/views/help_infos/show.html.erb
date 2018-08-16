@@ -1,9 +1,10 @@
 
 
 <% @help_info = HelpInfo.first  %>
+<h3> SÖKHJÄLP:</h3>
 
-<h3>SÖKHJÄLP:</h3>
-
+<details>
+   <summary> (Klicka här för att visa / dölja) </summary><br>
    <% if @help_info.blank? || @help_info.helptext.blank? %>
       Ingen hjälp information finns.
    <% else %>
@@ -24,3 +25,4 @@
       </div>
    <% end %>
 
+</details>
