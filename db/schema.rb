@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180730113252) do
+ActiveRecord::Schema.define(version: 20180810124802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180730113252) do
   end
 
   create_table "post_infos", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.string "issn"
     t.string "created_by", null: false
     t.string "updated_by", null: false
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20180730113252) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "show", default: true
-    t.index ["title"], name: "index_post_infos_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|
