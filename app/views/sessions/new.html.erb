@@ -12,9 +12,12 @@
          <div class="col-md-4"></div>
          <div class="col-md-4">
             <h2>LOGGA IN</h2><br>
+            <% flash.each do |key, value| %>
+               <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %>
             <%= form_for :session, url: '/login' do |f| %>
                <%= f.label :xname, "x-konto: " %>
-               <%= f.text_field :xname %><br>
+               <%= f.text_field :xname, autofocus: true %><br><br>
                <%= f.label :password, "Lösenord: " %>
                <%= f.password_field :password %><br>
                
@@ -23,7 +26,9 @@
                </div>
             <% end %>
          </div>
-         <div class="col-md-4"></div>
+         <div class="col-md-4">
+
+         </div>
       </div>
    </div>
 </body>

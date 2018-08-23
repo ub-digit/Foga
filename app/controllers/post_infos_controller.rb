@@ -22,8 +22,6 @@ class PostInfosController < ApplicationController
     if @post_info.save
   		redirect_to @post_info
   	else
-      pp @post_info.errors  #show errors in terminal window
-
   		render 'new'
   	end
   end

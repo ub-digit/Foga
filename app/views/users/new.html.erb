@@ -3,8 +3,7 @@
 <br>
 <div class="container-fluid"> 
       <div class="row">         
-         <div class="col-md-4">
-         </div>
+         <div class="col-md-4"></div>
          <div class="col-md-3">
             <h3>NY ANVÄNDARE</h3> <br><br>
             <%= form_for @user do |f| %>
@@ -30,12 +29,16 @@
          </div>
          <div class="col-md-4">
             <% if @user.errors.any? %>
-               <ul>
-               <h4>ERROR(s)</h4>
-               <% @user.errors.full_messages.each  do |e_message| %>
-                  <li> <%= e_message %> </li>
-               <% end %>
-               </ul>
+               <div id="error_explanation">
+                  <h2>ERROR</h2>
+                  <ul><br>
+                     <% @user.errors.messages.each  do |e_message| %>
+                        <% e_message[1].each do |single_mess| %>
+                           <li> <%= single_mess %></li><br>
+                        <% end %> 
+                     <% end %>
+                  </ul>
+               </div>
             <% end %>
          </div>   
       </div>

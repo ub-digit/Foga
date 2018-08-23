@@ -14,9 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to allusers_path
     else
-      pp "---ERROR creating NEW user account---"
       render 'new'
-      #redirect_to signup_path
     end
   end
 
@@ -25,11 +23,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    pp "---- USER EDIT"
+
   end
 
-  def update   
-    pp "----- UPDATE USER"  
+  def update     
   if @user.update(user_params) 
       redirect_to allusers_path
     else
@@ -40,16 +37,6 @@ class UsersController < ApplicationController
   def destroy
   end
 
-  def login
-   user = User.find(params[:xname])
-   if user.password == params[:password]
-     give_token
-   else
-    #flash.now[:danger] = 'Invalid email/password combination'
-    pp "---User login failed---"
-    redirect_to '/'#, notice: "FAIL"
-   end
-  end
 
 private
   def user_params
