@@ -24,8 +24,10 @@
                <%= f.label :password_confirmation, "Bekräfta lösenord: " %>
                <%= f.password_field :password_confirmation %><br>
                <br>
-               <%= f.label :is_admin, "Administratör:  " %>
-               <%= f.check_box :is_admin %>
+               <% unless @user == @current_user %>
+                  <%= f.label :is_admin, "Administratör:  " %>
+                  <%= f.check_box :is_admin %>
+               <% end %>
                
                <div class="actions" align="right"><br>
                   <h4><%= f.submit "Spara" %> </h4>
@@ -34,8 +36,10 @@
          <div class="col-md-4">
             <br><br><br><br><br>
             <div align="left">
-               <%= f.label :is_active, "Aktivt konto:  " %>
-               <%= f.check_box :is_active %>
+               <% unless @user == @current_user %>
+                  <%= f.label :is_active, "Aktivt konto:  " %>
+                  <%= f.check_box :is_active %>
+               <% end %>
             </div>
                <% if @user.errors.any? %>
                   <div id="error_explanation">
