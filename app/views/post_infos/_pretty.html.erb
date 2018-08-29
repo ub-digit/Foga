@@ -6,7 +6,7 @@
 			<th>Titel 			</th>
 			<th>Utgivare 		</th>
 			<th>Åtgärd 			</th>
-			<!-- <th>Anmärkning 		</th>  -->
+			<th>Anmärkning 		</th>  
 			<th>ISSN 			</th>
 			<th>Skapad av 		</th>
 			<th>Ändrad av 		</th>
@@ -19,7 +19,12 @@
 			<td>	<%= link_to p.title, post_info_path(p) %> 	</td>
 			<td>	<%= p.publisher %> 	</td>
 			<td>	<%=  op_exists(p) %> 					</td>
-			<!-- <td>	< %= p.comment %> 		</td> -->
+			<td>	<%	if p.comment and p.comment != "" %>	
+				<button type="button"  class="btn btn-secondary" 
+				data-trigger="focus" data-toggle="popover" data-placement="left" 
+				data-content="<%= p.comment  %>" > Anmärkning </button>	
+				<% end %> 
+			</td>
 	 		<td>	<%= p.issn %>				</td>
 			<td>	<%= p.created_by %> 		</td>
 			<td>	<%= p.updated_by %> 		</td>
@@ -28,3 +33,10 @@
 	<% end %>
 </table>
 	
+
+
+		<script>
+	$(document).ready(function(){
+	    $('[data-toggle="popover"]').popover();   
+	});
+	</script>
