@@ -39,7 +39,7 @@
                <%= f.label :operation_id, "Åtgärd *" %> 
                <%= collection_select(:post_info, :operation_id, 
                         Operation.all.order("operation_type"), 
-                        :id, :operation_type, :prompt => "Välj") %>
+                        :id, :type_and_desc, :prompt => "Välj") %>
                <br><br>
                <%= f.label :issn, "ISSN" %>
                <%= f.text_field :issn %><br>

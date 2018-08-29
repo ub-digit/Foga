@@ -9,4 +9,12 @@ class Operation < ApplicationRecord
 
    validates :operation_type, length: {in: 0..20}
 
+   def type_and_desc
+      if "#{description}" == ""
+         "#{operation_type}"
+      else
+         "#{operation_type} [-#{description}]"
+      end
+   end
+
 end
