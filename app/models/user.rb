@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
    validates :password,
       :presence => {on: :create, message: 'Lösenord krävs.'},
-      length: {on: :create, is: 6, message: 'Lösenordet måste vara 6 tecken långt.'},
+      length: {on: :create, minimum: 6, message: 'Lösenordet måste vara minst 6 tecken långt.'},
       :confirmation => {on: :create, message: 'Lösenord matchar ej.'}
 
 
