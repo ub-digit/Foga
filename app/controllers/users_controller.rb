@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate
   before_action :user_params, only:[:create, :login]
-  before_action :an_admin
+  before_action :an_admin, only:[:new, :create, :show, :destroy]
   before_action :find_user, only: [:edit, :update, :destroy]
 
 
@@ -27,8 +27,12 @@ class UsersController < ApplicationController
   end
 
   def update     
-  if @user.update(user_params) 
+  if @user.update(user_params)
+    if @current_user.is_admin
       redirect_to allusers_path
+    else
+      redirect_to post_infos_search_path 
+    end 
     else
       render 'edit'
     end 

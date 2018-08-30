@@ -13,7 +13,7 @@
          <div class="col-md-3">
             <h3>ÄNDRA ANVÄNDAREUPPGIFTER </h3> <br><br>
                <%= f.label :xname, "x-konto: " %>
-               <%= f.text_field :xname %><br>
+               <%= f.text_field :xname, class: "form-control", disabled: @user == @current_user %><br>
                <br>
                <%= f.label :name, "Namn: " %>
                <%= f.text_field :name %><br>

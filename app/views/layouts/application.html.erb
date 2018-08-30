@@ -65,7 +65,7 @@
 
           <div class="col-md-4">
             <ul class="nav navbar-nav navbar-centered">
-              <li><a>INLOGGAD SOM: 
+              <li><a href="<%= edit_user_path(@current_user) %>">INLOGGAD SOM: 
                 <b><%= @current_user.xname %> </b> </a> </li>        
               <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
             </ul>
