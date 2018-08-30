@@ -1,8 +1,6 @@
 
 
 <body>
-	<% #unless @post_infos.blank? 
-	%>
 
 <% unless @post_infos == nil %>
 	<br>
@@ -30,12 +28,15 @@
 			<tr>
 				<td>	<%= link_to p.title, post_info_path(p) %>		</td>
 				<td>	<%= p.publisher %>	</td>
-				<td>	<%=  op_exists(p) %>	</td>
+				<td>	<%= op_exists(p) %>	</td>
 
-				<td>	<%	if p.comment and p.comment != "" %>	
-					<button type="button"  class="btn btn-secondary" 
-					data-trigger="focus" data-toggle="popover" data-placement="left" 
-					data-content="<%= p.comment  %>" > Anmärkning </button>	<% end %> 	</td>
+				<td>	
+					<%	if p.comment and p.comment != "" %>	
+						<button type="button"  class="btn btn-secondary" 
+						data-trigger="focus" data-toggle="popover" data-placement="left" 
+						data-content= "<%= p.comment %>" > Anmärkning </button>	
+					<% end %> 	
+				</td>
 		 		
 		 		<td>	<%= p.issn %>			</td>
 				<td>	<%= p.created_by %>	</td>
