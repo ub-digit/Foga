@@ -4,21 +4,16 @@
 	<%= search_form_for @search, url: post_infos_search_path do |f| %>
 
 		<div class="row">
-			<div class="col-md-2">
-				<div class="field">
-					<%= f.label :title_start, "Titel börjar med" %>
-			  		<%= f.check_box :title_start %>
-				</div>
-			</div>
+			<div class="col-md-2"></div>
 			<div class="col-md-3">
 				<div class="field">
 					<%= f.label :title_has_every_term, "Titel innehåller" %>
 			  		<%= f.text_field  :title_has_every_term, autofocus: true %>
 				</div>
-				<!-- <div class="field">
+				<div class="field">
 					<%= f.label :title_start, "Titel börjar med" %>
 			  		<%= f.text_field  :title_start %>
-				</div> -->
+				</div>
 				<div class="field">
 					<%= f.label :publisher_has_every_term, "Utgivare" %>
 					<%= f.text_field :publisher_has_every_term %>
