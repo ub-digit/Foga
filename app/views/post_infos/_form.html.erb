@@ -1,48 +1,56 @@
 
-<!--
-	For new and edit.
+<!--	For new and edit.  -->
 
-	This is a rails partial file which helps to reduce code duplication.
+</head>
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4">
+            <br><br><br>
+            <% if @post_info.errors.any? %>
+               <div id="error_explanation">
+                  <h2>ERROR</h2>
+                  <ul><br>
+                     <!-- Delete error message from belongs_to in model 
+                       as it's in english. -->
+                     <% @post_info.errors.messages.delete(:operation) %>
+                     <% @post_info.errors.messages.each  do |e_message| %>
+                        <li> <%= e_message.last[0] %></li><br>
+                     <% end %>
+                  </ul>
+               </div>
+            <% end %>
+         </div>
+         
+         <div class="col-md-3">
+            <%= form_for @post_info do |f| %>
 
-
- -->
-
-<%= form_for @post_info do |f| %>
-
-	<% if @post_info.errors.any? %>
-	<ul>
-		<h4>ERROR(s)</h4>
-
-		<% @post_info.errors.full_messages.each  do |e_message| %>
-		<!-- .errors.full_messages.each do |e_message| %> 
-		-->
-			<li> <%= e_message %> </li>
-		<% end %>
-		
-	</ul>
-	<% end %>
-	
-	<%= f.label :title, "* Titel" %><br>
-	<%= f.text_field :title %><br>
-	<br>
-	<%= f.label :issn, "* ISSN" %><br>
-	<%= f.text_field :issn %><br>
-	<br>
-	<%= f.label :publisher, "* Utgivare" %><br>
-	<%= f.text_field :publisher %><br>
-	<br>
-	<%= f.label :comment, "Anmärkning" %><br>
-	<%= f.text_area :comment, size: "50x12" %><br>
-	<br>
-	<%= f.label "* Person" %><br>
-	<%= f.text_field :created_by %><br>
-	<%= f.text_field :updated_by %><br>
-	<br>
-	<%= f.label :operation_id, "* Åtgärd" %> <br>
-	<%= collection_select(:post_info, :operation_id, 
-			Operation.all.order("operation_type"), 
-			:id, :operation_type, :prompt => "Välj") %>
-	<br>
-	<br>
-	<%= f.submit "Spara"%>
-<% end %>
+               <h3><%= @form_action_title %></h3> 
+            
+               <div align="right">
+                  <h4> <%= f.submit "Spara"%> </h4>
+               </div>
+               <%= f.label :title, "Titel *" %>
+               <%= f.text_field :title, autofocus: true %><br>
+               <br>
+               <%= f.label :publisher, "Utgivare *" %>
+               <%= f.text_field :publisher %><br>
+               <br>
+               <%= f.label :operation_id, "Åtgärd *" %> 
+               <%= collection_select(:post_info, :operation_id, 
+                        Operation.all.order("operation_type"), 
+                        :id, :type_and_desc, :prompt => "Välj") %>
+               <br><br>
+               <%= f.label :issn, "ISSN" %>
+               <%= f.text_field :issn %><br>
+               <br>
+					<%= f.label :comment, "Anmärkning" %>
+					<%= f.text_area :comment, size: "50x10" %><br>
+					<br>
+				<% end %>
+         </div>
+         <div class="col-md-4"></div>
+      </div>
+   </div>
+</body>
+</html>

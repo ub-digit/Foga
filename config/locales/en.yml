@@ -31,3 +31,19 @@
 
 en:
   hello: "Hello world"
+  will_paginate:
+    previous_label: "&#8592; Föregående"
+    next_label: "Nästa &#8594;"
+     
+    page_entries_info:
+      single_page:
+        zero:  "%{count} Träffar"
+        one:   "%{count} Träff"
+        other: "%{count} Träffar"
+      single_page_html:
+        zero:  "%{count} Träffar"
+        one:   "<b>1</b> Träff"
+        other: "Visar <b>alla&nbsp;%{count}</b> träffar"
+
+      multi_page: "Visar %{from} - %{to} av %{count} träffar"
+      multi_page_html: "Visar <b>%{from}&nbsp;-&nbsp;%{to}</b> av <b>%{count}</b> träffar"

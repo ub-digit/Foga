@@ -3,7 +3,7 @@ body {
   color: #333;
   margin: 50px;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 18px;
 }
 
@@ -30,8 +30,8 @@ a {
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: mediumblue;
+    /* background-color: skyblue; */
   }
 }
 
@@ -43,6 +43,8 @@ table, th, td {
 
 th {
   text-align: left;
+  font-family: verdana;
+  font-size: 15px;
 }
 
 th, td {
@@ -60,30 +62,30 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
+  padding: 1px;
+  background-color: lightcoral;
   display: table;
 }
 
 #error_explanation {
-  width: 450px;
+  
   border: 2px solid red;
   padding: 7px 7px 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: #f0f0f255;
 
   h2 {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
+    font-size: 14px;
     margin: -7px -7px 0;
     background-color: #c00;
     color: #fff;
   }
 
   ul li {
-    font-size: 12px;
+    font-size: 14px;
     list-style: square;
   }
 }

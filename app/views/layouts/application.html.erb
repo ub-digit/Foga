@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <html>
   <head>
     <title>Foga</title>
@@ -6,33 +14,67 @@
 
     <%= stylesheet_link_tag    'application', 
         media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 
-        'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+<body>
 
+  <nav class="navbar navbar-default "> 
+    <div class="container-fluid"> 
+      <% if @current_user %> 
 
-  <nav class="navbar navbar-default"> 
-    <div class="container">
-      <div class="navbar-header">
-        <%= link_to "SÖK", post_infos_path %>
-      </div>
+        <!-- Admin functionality only. -->
+        <% if @current_user && @current_user.is_admin %>
+          <div class="row">
+            <div class="col-md-4">
+              <ul class="nav navbar-nav navbar-left">
+                  <li><a href="<%=new_operation_path %>">  NY ÅTGÄRD </a> </li>
+              </ul>
+            </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        <!-- if using bootstrap then envelop each link thing in a <li> tab.
-          Can also have if then conditions. E.g. if logged in as admin
-          show new/edit operations link. Look into that! -->
+            <div class="col-md-4">
+              <!--ul class="nav navbar-nav navbar-centered">         
+                  <li><a href="<%=help_infos_path %>">REDIGERA HJÄLP</a> </li>
+              </ul -->
+            </div>
 
-        <%= link_to "SENASTE POSTER", post_infos_latest_path %> 
-        <!-- , class: "navbar-brand"  root_path   -->
-        <%= link_to "NY POST", new_post_info_path %>
-        <%= link_to "ÅTGÄRDER", operations_path %>
-      </ul>
-    </div>
-  </nav>
+            <div class="col-md-4">
+              <ul class="nav navbar-nav navbar-centered">
+                  <li><a href="<%=allusers_path %>">  ANVÄNDARE </a> </li>
+                  <li><a href="<%=signup_path %>">  NY ANVÄNDARE </a> </li>
+              </ul>
+            </div>  
+          </div>
+        <% end %>
 
+        <!-- All users. -->
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="<%=new_post_info_path %>"> NY POST </a> </li>
+              <li><a href="<%=operations_path %>"> ÅTGÄRDER </a> </li>
+            </ul>
+          </div>
 
+          <div class="col-md-4">
+            <ul class="nav navbar-nav navbar-centered">
+              <li><a href="<%=post_infos_search_path %>">SÖK</a> </li>
+              <li><a href="<%=post_infos_latest_path %>">SENASTE POSTER</a> </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <ul class="nav navbar-nav navbar-centered">
+              <li><a href="<%= edit_user_path(@current_user) %>">INLOGGAD SOM: 
+                <b><%= @current_user.xname %> </b> </a> </li>        
+              <li><a href="<%=logout_path %>">  LOGGA UT </a> </li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+
+		</div>
+	</nav>
 
     <%= yield %>
     <!-- Everything above this yield tag will be common to every view page in our application. -->

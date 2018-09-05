@@ -30,13 +30,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+ gem 'bcrypt', '~> 3.1.7'
 
 # Use Ransak for search capability
 # See https://github.com/activerecord-hackery/ransack for updates etc.
 gem 'ransack'
 # Pagination
-gem "will_paginate", "~> 3.0.4" 
+gem "will_paginate", "~> 3.0.4"
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 # Nullifies empty strings
 gem 'nilify_blanks'
 

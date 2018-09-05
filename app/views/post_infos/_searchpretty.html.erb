@@ -1,0 +1,57 @@
+
+
+<body>
+
+<% unless @post_infos == nil %>
+	<br>
+	
+	<center> <%= will_paginate @post_infos, renderer: BootstrapPagination::Rails %> </center>
+	
+	<h4><%= page_entries_info @post_infos %></h4>	 
+
+	<br>     
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+		<tr>
+			<th><%= sort_link @search, :title, "Titel"  %>			</th>
+			<th><%= sort_link @search, :publisher, "Utgivare" %>	</th>
+			<th><%= sort_link @search, :operation_id, "Åtgärd" %> 	</th>
+			<th> Anmärkning 	</th> 
+			<th><%= sort_link @search, :issn, "ISSN" %> 				</th>
+			<th><%= sort_link @search, :created_by, "Skapad av" %>	</th>
+			<th><%= sort_link @search, :updated_by, "Ändrad av" %> 	</th>
+			<th><%= sort_link @search, :updated_at, "Senast uppdaterad" %>		</th>
+		</tr>
+		</thead>
+
+		<% @post_infos.each do |p| %>
+			<tr>
+				<td>	<%= link_to p.title, post_info_path(p) %>		</td>
+				<td>	<%= p.publisher %>	</td>
+				<td>	<%= op_exists(p) %>	</td>
+
+				<td>	
+					<%	if p.comment and p.comment != "" %>	
+						<button type="button"  class="btn btn-secondary" 
+						data-trigger="focus" data-toggle="popover" data-placement="left" 
+						data-content= "<%= p.comment %>" > Anmärkning </button>	
+					<% end %> 	
+				</td>
+		 		
+		 		<td>	<%= p.issn %>			</td>
+				<td>	<%= p.created_by %>	</td>
+				<td>	<%= p.updated_by %> 	</td>
+				<td>	<%= p.updated_at.to_date %>		</td>
+			</tr>
+		<% end %>
+	</table>
+
+	<br><br>
+	<script>
+	$(document).ready(function(){
+	    $('[data-toggle="popover"]').popover();   
+	});
+	</script>
+
+<% end -%>
+</body>	

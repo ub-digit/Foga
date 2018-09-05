@@ -1,18 +1,73 @@
+ <br>
+<!-- Searchy searchy -->
+<div class="container-fluid">
+	<%= search_form_for @search, url: post_infos_search_path do |f| %>
 
-<%= render 'form' %>
-<br>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+				<div class="field">
+					<%= f.label :title_has_every_term, "Titel innehåller" %>
+			  		<%= f.text_field  :title_has_every_term, autofocus: true %>
+				</div>
+				<div class="field">
+					<%= f.label :title_start, "Titel börjar med" %>
+			  		<%= f.text_field  :title_start %>
+				</div>
+				<div class="field">
+					<%= f.label :publisher_has_every_term, "Utgivare" %>
+					<%= f.text_field :publisher_has_every_term %>
+				</div>
+				<div class="field">
+					<%= f.label :issn_eq, "ISSN" %>
+					<%= f.text_field :issn_eq %>
+				</div>
+				
+				<br>
+				<b>Antal träffar per sida: </b> 
+				<%= select_tag "aper_page", options_for_select([50, 100, 200], params[:aper_page]) %>
+				
+				<div class="actions" align="right">
+					<h4> <%= f.submit "SÖK" %></h4>
+					<% f.check_box :show_true  %>
+				</div>
+			</div>
 
-<h2> Title:  <%= @post_info.title %> </h2>
-	<b> Operation type: </b><%= Operation.find(@post_info.operation_id).operation_type %> <br>
+			<div class="col-md-2">
+				<div class="field">
+					<%= f.label :operation_id_eq, "Åtgärd" %>
+					<%= f.select :operation_id_eq, options_from_collection_for_select(Operation.all.order("operation_type"), 
+								'id', 'operation_type', @search.operation_id_eq),
+								include_blank: "Alla"	%>
+				</div>
+				<div class="field">
+					<%= f.label :created_at_gteq, "Från" %>
+					<%= f.date_field :created_at_gteq, min: Date.new(1997, 1, 1), max: Date.today %>
+				</div>
+				<div class="field">
+					<%= f.label :created_at_lteq, "Till" %>
+					<%= f.date_field :created_at_lteq, min: Date.new(1997, 1, 1), max: Date.today %>
+				</div>
+				<div class="field">
+					<%= f.label :comment_has_every_term, "Anmärkning" %>
+					<%= f.text_field :comment_has_every_term %>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<%= render :template => "/help_infos/show" %>
+			</div>
+		</div>
 
-	<b> Publisher:  	</b><%= @post_info.publisher %> <br>
-	<b> ISSN:  			</b><%= @post_info.issn %> <br>
-	
-	<!--  Operation:  < %= @post_info.operation_type %> <br > -->
-	<b>Created by: 	</b> <%= @post_info.created_by %> <br>
-	<b>At:   		</b><%= @post_info.created_at %>  <!-- change to date -->
-	<br>
-	<b>Comment:  	</b><%= @post_info.comment %><br>
-	<b>Updated by: 	</b> <%= @post_info.updated_by %> <br>
-	
-	
+	<% end %>
+</div>
+
+
+<!-- flytta denna if... till searchpretty. Kan göra bättre koll där. -->
+<% if params[:commit] != nil %>
+	<%= render 'searchpretty' %>
+<% else%>
+	<br><br>
+	<%= "Sökningen gav inga resultat" %>
+<% end %>
+
+

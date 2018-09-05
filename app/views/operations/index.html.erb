@@ -1,20 +1,36 @@
 
 
-<h3> <%= link_to "Ny åtgärd", new_operation_path %> </h3>
+<br> <br>
+<html>
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+         <div class="col-md-4"></div>
+         <div class="col-md-4">
+				<table>
+					<tr>
+						<th><h4> ÅTGÄRD 		</h4></th>
+						<th><h4> BESKRIVNING	</h4></th>
+					</tr>
 
-<table>
-	<tr>
-		<h3>
-			<th>Operation type 	</th>
-			<th>Description 	</th>
-		</h3>
-	</tr>
+					<% @operations.each do |o| %>
+						<tr>
+                     <% if @current_user.is_admin %>
+							  <td> <%= link_to o.operation_type, edit_operation_path(o) %>	</td>
+                     <% else %>
+                       <td> <%= o.operation_type %> </td>
+                     <% end %>
+							<td> <%= o.description %>	 </td>
+						</tr>
+					<% end %>
+				</table>
+         </div>
+         <div class="col-md-4"></div>
+      </div>
+   </div>
+</body>
+</html>
 
-<% @operations.each do |o| %>
-	<tr>
-		<td><%= link_to o.operation_type, edit_operation_path(o) %> </td>
-			<!-- < %= link_to o.operation_type, operation_path(o) %> </td> -->
-		<td> <%= o.description %> </td>
-	</tr>
-<% end %>
-</table>
+
+
+

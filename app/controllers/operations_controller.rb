@@ -1,5 +1,7 @@
 class OperationsController < ApplicationController
+  before_action :authenticate
   before_action :find_operation, only:[:show, :edit, :update, :destroy]
+  before_action :an_admin, only:[:new, :edit, :update, :destroy, :show]
 
   def index
   	@operations = Operation.all.order("operation_type")
@@ -21,25 +23,24 @@ class OperationsController < ApplicationController
   end
 
   def show
-  	find_operation
   end
 
   def edit
-  	
   end
 
   def update
   	if @operation.update(operation_params)
   		redirect_to @operation
+      pp "==== printing in update (second an_admin check?)"
   	else
   		render 'edit'
   	end
   end
 
-  def destroy
-    @operation.destroy
-    redirect_to operations_path
-  end
+  # def destroy
+  #   @operation.destroy
+  #   redirect_to operations_path
+  # end
 
 
   private
@@ -51,6 +52,7 @@ class OperationsController < ApplicationController
   def operation_params
   	params.require(:operation).permit(:operation_type, :description)
   end
+
 
 end
  

@@ -1,0 +1,60 @@
+
+
+<br>
+<div class="container-fluid"> 
+      <div class="row">         
+         <%= form_for @user do |f| %>
+         <div class="col-md-4">
+            <br><br><br><br><br><br>
+            <br><br><br><br><br>
+            <h3> INFO: </h3><br>
+            Lösenordsfältet måste fyllas i bara om du vill byta lösenord. 
+         </div>
+         <div class="col-md-3">
+            <h3>ÄNDRA ANVÄNDAREUPPGIFTER </h3> <br><br>
+               <%= f.label :xname, "x-konto: " %>
+               <%= f.text_field :xname, class: "form-control", disabled: @user == @current_user %><br>
+               <br>
+               <%= f.label :name, "Namn: " %>
+               <%= f.text_field :name %><br>
+               <br>
+               <%= f.label :password, "Lösenord: " %>
+               <%= f.password_field :password %><br>
+               <br>
+               <%= f.label :password_confirmation, "Bekräfta lösenord: " %>
+               <%= f.password_field :password_confirmation %><br>
+               <br>
+               <% unless @user == @current_user %>
+                  <%= f.label :is_admin, "Administratör:  " %>
+                  <%= f.check_box :is_admin %>
+               <% end %>
+               
+               <div class="actions" align="right"><br>
+                  <h4><%= f.submit "Spara" %> </h4>
+               </div>
+         </div>
+         <div class="col-md-4">
+            <br><br><br><br><br>
+            <div align="left">
+               <% unless @user == @current_user %>
+                  <%= f.label :is_active, "Aktivt konto:  " %>
+                  <%= f.check_box :is_active %>
+               <% end %>
+            </div>
+               <% if @user.errors.any? %>
+                  <div id="error_explanation">
+                     <h2>ERROR</h2>
+                     <ul><br>
+                     <% @user.errors.messages.each  do |e_message| %>
+                        <% e_message[1].each do |single_mess| %>
+                           <li> <%= single_mess %></li><br>
+                        <% end %> 
+                     <% end %>
+                     </ul>
+                  </div>
+               <% end %>
+            </div>
+         <% end %>
+   </div>
+
+<br>

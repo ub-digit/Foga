@@ -1,0 +1,39 @@
+
+</head>
+<body>
+    <div class="container-fluid"> 
+      <div class="row">         
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
+          <%= form_with(model: help_info, local: true) do |form| %>
+            <h3>HJÄLPAVSNITT</h3> 
+                           
+            <% if help_info.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(help_info.errors.count, "error") %> 
+                prohibited this help_info from being saved:</h2>
+                <ul>
+                <% help_info.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="field">
+              <br>
+              <%= form.text_area :helptext, id: :help_info_helptext, size: "50x15" %>
+            </div> <br>
+            <div class="actions", align="right">
+              <%= form.submit "Spara" %>
+            </div>
+         
+            <br>
+          <% end %>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+  </div>
+</body>
+</html>
+
+
